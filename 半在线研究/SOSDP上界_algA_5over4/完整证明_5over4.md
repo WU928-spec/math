@@ -8,7 +8,7 @@
 > - **第二证明：LP 对偶证书路线**（第 II 部分全文：LP 常数 Farkas 证书 + 组合引理 + Qcount 闭式证书，全域 $\forall m$、**零证书**）。
 > 二者互为独立双证；本文任何部分不依赖另一部分的结论。
 >
-> **修订记录（2026-09-24）**：第二证明整体符号化（零证书）；原紧性引理 1.8（sliver 紧性）因纯值级为假作废，记录于 `作废引理_sliver紧性.md`；证书样张（附录 E）移出至 `archive/证书样张_附录E.md`。
+> **修订记录（2026-09-24）**：第二证明整体符号化（零证书）；原紧性引理 1.8（sliver 紧性）因纯值级为假作废，记录于 `作废引理_sliver紧性.md`。
 
 ---
 # 第 I 部分　第一证明：极小反例 + 分情形（完整 5/4）
@@ -583,17 +583,11 @@ razor 带 (0.4) 为上述路线闭合后剩余的完整区域。
 - B4 单行合法性：SJ-REV 直推（agent-1，main 核验 4 项 PASS）；
 - 端点三段符号化：k=1/m−1（main sum 技巧）、k=m−2（agent-3 值语言恒等式，main 核验 111/111）；
 - 组装级终审：agent-1 覆盖完整性/引用合法性/链衔接/独立性四点（a1_final_review.md，已按 F1′ 修订）。
-**D.3 证明文档**：`完整证明_5over4.md`（本文，现行）、`a2_tightness_machine.md`（Qcount + 薄层闭式）、`a1_b4_symbolic.md`（B4 SJ-REV 直推）、`a3_endpoint_symbolic.md`（k=m−2 恒等式）、`razor_closure.md`（闭合总结）、`作废引理_sliver紧性.md`（作废记录）、`archive/证书样张_附录E.md`（计算背书样张）。
+**D.3 证明文档**：`完整证明_5over4.md`（本文，现行）、`a2_tightness_machine.md`（Qcount + 薄层闭式）、`a1_b4_symbolic.md`（B4 SJ-REV 直推）、`a3_endpoint_symbolic.md`（k=m−2 恒等式）、`razor_closure.md`（闭合总结）、`作废引理_sliver紧性.md`（作废记录）。
 
 ---
 
 **文档结束**。「razor 角落 ⟹ rest 不可装箱」的 LP 第二证明至此完整（**整体 ∀m 零证书**）：基础引理（§1）+ k 端点三段（§2，符号化）+ uncond 层（§3，T2+B4）+ 薄层（§4，Qcount 闭式）+ 总装（§5）+ 验证与出处（附录 A–D/F）。
-
----
-
-# 附录 E. 代表性证书样张（已移出）
-
-> 全部证书样张（E.1 SS 墙 / E.2 双墙 / E.3 T2 模板 / E.4 B4 / E.5 U(a)）已移出至 `archive/证书样张_附录E.md`——均为**计算背书（非证明要件）**，不影响证明严谨性。
 
 ---
 
