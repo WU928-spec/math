@@ -595,7 +595,9 @@ razor 带 (0.4) 为上述路线闭合后剩余的完整区域。
 - `a3_hi_analyze.py` / `a3_tight_stress.py`：$(k,I)$ 联合分布与紧实例压测（15438 例 $I<k$、K 帽放松零翻转）；
 - `a3_Prazor_scan.py` / `a3_Prazor_certs.txt`：k=m−1 双墙 374 证书；
 - `a3_template_verify.py` / `a3_template_fit.py`：T2 模板核验与拟合；
-- `a2_tightness_machine.py`（及 /tmp 脚本）：Qcount 松弛 + 薄层闭式核验（$nS=5..20$ 全过）；
+- `a2_lp_qcount.py` / `a2_lp_qcount2.py`：**Qcount 松弛**（value 角落 + sliver + $\sigma\ge\varepsilon$ + LZ/HZ$_k$ + Qcount$_k$；前者逐 $k$ 判可行性，后者求 max $\sigma$）。原驱动 `a2_tightness_machine.py` 从未入库、机器上已不可寻；这两支即其主驱动，2026-09-24 自 `/tmp` 找回入库，复跑复现「全 $k$ 不可行」；
+- `a2_scan.py` / `a2_scan2.py`：sliver + 可装箱点的 ghost 实证背板（对应 15469/58293 例、0 个机器可实现）；
+- **薄层闭式 Farkas 证书核验**（$nS=5..20$ 全过）：**脚本未入库且已不可寻**；权重表与逐变量配平已完整记录于 `archive/superseded/a2_tightness_machine.md` §6，另由 main 独立 Fraction 复核（记录见 `archive/collab/BOARD.md`）；
 - `a1_b4_symbolic.py`：B4 SJ-REV 直推核验（4 项 PASS）；
 - `a3_endpoint_verify.py`：k=m−2 恒等式核验（111/111）。
 **D.2 敌意复核记录**（本文每个核心引理均经独立复核）：
