@@ -3,8 +3,9 @@
 （交换类型序列，物品按值序编号）是否一致。
 若一致 ⟹ regime=模式类，m-无关，∀m 簿记可行。
 """
+import os
 import sys
-sys.path.insert(0, '/Users/a123456/math/research/2026-09-19_algA_5over4/code')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from jel_path import descent_path, idx_struct
 
 

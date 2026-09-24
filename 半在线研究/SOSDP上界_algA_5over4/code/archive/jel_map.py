@@ -2,8 +2,9 @@
 两参数族（4 件物品 3 箱）：a≤b≤c≤d 中固定形状，扫 (b,c) 平面，
 记录每点极小形的结构（哪几件同箱），看分片数与边界形状。
 """
+import os
 import sys
-sys.path.insert(0, '/Users/a123456/math/research/2026-09-19_algA_5over4/code')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from exchange_probe import descent
 
 
