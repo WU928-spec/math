@@ -1,3 +1,11 @@
+> ⚠️ **本文件是 `lsv1996.pdf` 的 OCR 文本提取，不是原文。** OCR 错字较多：作者名被逐字符加空格
+> 扩成 `W e i - P i n g L i u`，机构名被识别为 `^BelI-Northern` / `FaculO, of Administration` /
+> `Universi~ of Ottawa`，年份与页码亦有粘连。**逐字引用请以 `lsv1996.pdf` 为准**；本 txt 仅用于检索与
+> 定位内容。文献：W.-P. Liu, J. B. Sidney, A. van Vliet, *Ordinal algorithms for parallel machine
+> scheduling*, Operations Research Letters **18** (1996) 223–232.
+
+---
+
 Operations Research Letters 18 (1996) 223 232
 
 ELSEVIER

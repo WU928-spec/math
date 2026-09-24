@@ -2,7 +2,7 @@
 
 > 本目录存放**过程文献与历史版本**，都不是最终证明文本。**现行定稿见 `../完整证明_5over4.md`。**
 
-- **reports/**：多代理协作时代（已停用）的工作报告（a1_/a2_/a3_ 系列 md）与 inbox 通信记录。部分结论已被后续路线取代（尤其涉及 sliver 紧性者），**勿作依据**。内含若干旧路径 `/Users/a123456/math/research/2026-09-19_algA_5over4/` 的历史命令记录，未逐条改写。
+- **reports/**：**已于 2026-09-24 清理删除**（原为多代理协作时代的工作报告 a1_/a2_/a3_ 系列与 inbox 通信记录）。删除理由：其结论多已被后续路线取代（尤其涉及 sliver 紧性者），留存有误引风险。定稿附录 D.2 曾引用的两份复核报告（`a1_review_t2_caseb.md`、`a1_final_review.md`）随之删除，其**结论仍保留在附录 D.2 正文**；如需追溯原文，可从本仓库 2026-09-24 清理前的提交取回（清理后的提交号见 `git log`，清理前状态含 tag `pre-organize-2026-09-24`）。
 - **drafts/**：被取代的草稿——main_beta_proof_draft.md（v1）、midk_note.md、lemma_T_draft.md、a1_tight_real.py（code/ 版的旧版）。
 - **superseded/**：曾被当作正文的证明旧版，归档时**未改动内容**——
   - `second_proof.md`（第二证明符号化前的完整版）、`LP_ROUTE.md`（LP 路线旧终稿 v1.0）、`razor_closure.md`（闭合总结）；
