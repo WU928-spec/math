@@ -8,7 +8,8 @@
 > - **第二证明：LP 对偶证书路线**（第 II 部分全文：LP 常数 Farkas 证书 + 组合引理 + Qcount 闭式证书，全域 $\forall m$、**零证书**）。
 > 二者互为独立双证；本文任何部分不依赖另一部分的结论。
 >
-> **修订记录（2026-09-24）**：第二证明整体符号化（零证书）；原紧性引理 1.8（sliver 紧性）因纯值级为假作废，记录于 `作废引理_sliver紧性.md`。
+> **修订记录（2026-09-24）**：第二证明整体符号化（零证书）；原紧性引理 1.8（sliver 紧性）因纯值级为假作废，记录于 `作废引理_sliver紧性.md`；
+> §6' 增补**第二支（引理 P3C 纯计数闭合）**与引理 F/G 并列；附录 D 同步更新数据与出处（清理 0 字节空壳、过程文献，以及已归档旧版的引用/路径）。
 
 ---
 # 第 I 部分　第一证明：极小反例 + 分情形（完整 5/4）
@@ -189,13 +190,33 @@ C_A = p_i + t。角落 = 危险 C_A > 5/4。
 与此一致，作为计算交叉验证存档。（2026-09-21 注：早期 pairing_feasible.py 的 firststep
 编码方向有误，已废止，由 farkas_fixed.py 取代；本引理的符号证明不依赖任何 LP。）
 
-## 6'. 口袋 3（最闲机 ≥ 3 件）：闭合（引理 F/G 引用，2026-09-20）
+## 6'. 口袋 3（最闲机 ≥ 3 件）：闭合——**两支独立证明并列**
 
-M₀ 件数 k ≥ 3。m = 4 由 ★★gen-k 闭合（ℓ₀ ≤ 1 − t/m ⟹ C_A ≤ 1 + 3t/4 ≤ 5/4），m ≥ 5 且存在
-非大 2 件台时复用 §5 证书（证书不依赖 M₀ 件数）。残留情形（所有 2 件台含大任务 / 无 2 件台）
-由 §2c 引理 F/G（fallback 浅/深情形均无危险）直接闭合。∎
+M₀ 件数 k ≥ 3。m = 4 由 ★★gen-k 闭合（ℓ₀ ≤ 1 − t/m ⟹ C_A ≤ 1 + 3t/4 ≤ 5/4）。m ≥ 5 有**两支互相
+独立的闭合**，各有自己的完整论证，可任取其一，也可并用作互证（本文两支并列）：
 
-（早期静态封顶 ≈ 1.2–1.26 仅为连续松弛上界；引理 F/G 为纯符号闭合，模糊测试峰值 1.10 与之吻合。）
+**第一支（引理 F/G，§2c）**：m ≥ 5 且存在非大 2 件台时复用 §5 证书（证书不依赖 M₀ 件数）；
+残留情形（所有 2 件台含大任务 / 无 2 件台）由 §2c 引理 F/G（fallback 浅/深情形均无危险）直接闭合。
+
+**第二支（引理 P3C：纯计数闭合，全文见 `pocket3_counting.md`）**：m ≥ 5 且**他机全 2 件**时，
+**不依赖 danger、不依赖 $y,z\ge1-2t$、不依赖 firststep**，纯计数即得矛盾。设 M₀ = {x,y,z}
+（x ≤ y ≤ z；z 为初始件故 z ≥ q₁，x, y ≥ t 为后至件），他机 m−1 台各 {s_i, j_i}，s_i + j_i ≥ ℓ₀：
+
+1. **s_i ≥ 2t**：s_i ≥ ℓ₀ − j_i ≥ ℓ₀ − q₁ ≥ x+y+z − q₁ ≥ t+t+q₁−q₁ = 2t；
+2. **senior 两两不共箱**：s_i + s_k ≥ 4t > 1（t > 1/4）⟹ m−1 个 senior 各占一个 OPT 箱；
+3. **每 senior 箱至多带 1 件非 senior**：非 senior 全部 ≥ t，s_i + 两件 ≥ 4t > 1；
+4. **OPT 每箱至多 3 件**：4 件各 ≥ t 则和 ≥ 4t > 1；
+5. **计数矛盾**：非 senior 共 m+3 件（{x,y,z,t} ∪ {j_i}_{i=1..m−1}），容量 ≤ (m−1)+3 = m+2 < m+3。∎
+
+第二支覆盖"他机全 2 件"的全部子情形（含原"非大 2 件台复用 §5"与"残留 F/G"两支）；他机有 1 件台
+或 ≥3 件台仍由第一支（引理 F/G）覆盖。两支机制不同——第一支走 fallback 浅/深二分，第二支走守恒
+计数（完全不碰 danger 与 firststep）——故互为独立互证。
+
+**验证**：`code/pocket3_counting_verify.py`（sympy 全 PASS：ℓ₀ ≥ 2t+q₁、s_i ≥ ℓ₀−q₁、4t>1 ⟺ t>1/4、
+非 senior m+3 件、容量 m+2、缺口 1）；数值复核 `code/archive/pocket3_bins.py`（m=5..8 全 cnt × 全
+firststep 分支 × t 网格：可行点 76 个，违反 s_i ≥ 2t 的 0 个、装箱可行的 0 个）。
+
+（早期静态封顶 ≈ 1.2–1.26 仅为连续松弛上界；两支均为纯符号闭合，模糊测试峰值 1.10 与之吻合。）
 
 ## 7. 数值证据
 
@@ -205,7 +226,8 @@ M₀ 件数 k ≥ 3。m = 4 由 ★★gen-k 闭合（ℓ₀ ≤ 1 − t/m ⟹ C_
 
 ## 附：验证协议
 
-- 本文全部代数恒等式/不等式由 `code/verify_proof.py`（sympy 符号验证）复核，输出 PASS/FAIL。
+- 本文全部代数恒等式/不等式由 `code/verify_proof.py`（sympy 符号验证）复核，输出 PASS/FAIL（2026-09-24 复核：33 项全 PASS）。
+- 第 I 部分 §6' 第二支（引理 P3C 纯计数闭合）由 `code/pocket3_counting_verify.py`（sympy）复核，全 PASS。
 - LP 卡片证书由 `code/lp_cards.py` 生成。
 
 ---
@@ -568,8 +590,8 @@ razor 带 (0.4) 为上述路线闭合后剩余的完整区域。
 
 # 附录 D. 数据与复核记录
 
-**D.1 数据文件**（目录 code/）：
-- `main_tight_construct.py` + `main_tight_construct.jsonl`：全紧实例构造与角落判定（4373/4373 无效）；
+**D.1 数据文件**（目录 `code/`；已归档者注明 `code/archive/`）：
+- `main_tight_construct.py`：全紧实例构造与角落判定（4373/4373 无效）。**结果在脚本 stdout，未落盘为数据文件**——原 `main_tight_construct.jsonl` 是 0 字节空壳，2026-09-24 已清理；
 - `a3_hi_analyze.py` / `a3_tight_stress.py`：$(k,I)$ 联合分布与紧实例压测（15438 例 $I<k$、K 帽放松零翻转）；
 - `a3_Prazor_scan.py` / `a3_Prazor_certs.txt`：k=m−1 双墙 374 证书；
 - `a3_template_verify.py` / `a3_template_fit.py`：T2 模板核验与拟合；
@@ -579,11 +601,13 @@ razor 带 (0.4) 为上述路线闭合后剩余的完整区域。
 **D.2 敌意复核记录**（本文每个核心引理均经独立复核）：
 - Qcount（引理 1.6′）：mon2×pair 四行，main 复核；
 - 薄层闭式 Farkas 证书（§4.2）：main 独立 Fraction 核验 $nS=5..20$、$h=2/3/4$ 配平 $A^Tw=0/b_t^Tw=0/b_c^Tw<0$ 全过；
-- T2 模板：agent-1 自建行代数独立复核 VALID（a1_review_t2_caseb.md）；
+- T2 模板：agent-1 自建行代数独立复核 VALID（复核报告 `a1_review_t2_caseb.md`，2026-09-24 随过程文献清理，结论保留于此）；
 - B4 单行合法性：SJ-REV 直推（agent-1，main 核验 4 项 PASS）；
 - 端点三段符号化：k=1/m−1（main sum 技巧）、k=m−2（agent-3 值语言恒等式，main 核验 111/111）；
-- 组装级终审：agent-1 覆盖完整性/引用合法性/链衔接/独立性四点（a1_final_review.md，已按 F1′ 修订）。
-**D.3 证明文档**：`完整证明_5over4.md`（本文，现行）、`a2_tightness_machine.md`（Qcount + 薄层闭式）、`a1_b4_symbolic.md`（B4 SJ-REV 直推）、`a3_endpoint_symbolic.md`（k=m−2 恒等式）、`razor_closure.md`（闭合总结）、`作废引理_sliver紧性.md`（作废记录）。
+- 组装级终审：agent-1 覆盖完整性/引用合法性/链衔接/独立性四点（已按 F1′ 修订；复核报告 `a1_final_review.md` 2026-09-24 随过程文献清理，结论保留于此）；
+- 口袋 3 纯计数闭合（引理 P3C，§6' 第二支）：`code/pocket3_counting_verify.py`（sympy 全 PASS）。
+**D.3 证明文档**：`完整证明_5over4.md`（本文，现行）、`作废引理_sliver紧性.md`（作废记录）、`hole_close_lemma.md`（mon2 / 保序引理出处）。
+**已被定稿取代、现存于 `archive/superseded/`（仅供追溯，勿作依据）**：`second_proof.md`、`razor_closure.md`、`LP_ROUTE.md`、`main_alpha_tight.md`、`main_beta_proof_v2.md`、`a3_beta_hi.md`、`a1_b4_symbolic.md`、`a3_endpoint_symbolic.md`、`a2_tightness_machine.md`、`a1_second_proof_review.md`。
 
 ---
 
