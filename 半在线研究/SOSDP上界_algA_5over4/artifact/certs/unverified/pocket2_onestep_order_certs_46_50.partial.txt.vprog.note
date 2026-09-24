@@ -1,0 +1,3 @@
+原断点 sidecar 针对未拆分整文件（done=387000,pass=387000,fail=0）。
+拆分后对应关系：本 partial 文件的前 123425 行已验 PASS（387000-263575），其余 80984 行未验。
+续跑：A4_VERIFY_SLICE=24000 nice -n 15 python code/verify_certs.py <partial 文件>（需全新 sidecar 时对 partial 单独建）

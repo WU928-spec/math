@@ -1,0 +1,15 @@
+# Python 虚拟环境与缓存
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# R
+.Rhistory
+
+# 运行日志
+logs/
+*.log

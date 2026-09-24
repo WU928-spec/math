@@ -1,0 +1,973 @@
+Operations Research Letters 18 (1996) 223 232
+
+ELSEVIER
+
+Ordinal algorithms for parallel machine scheduling
+W e i - P i n g L i u a' 1, J e f f r e y B. S i d n e y b'*" 1, A n d r 6 v a n Vliet c
+~BelI-Northern Research, P.O. Box 3511, Station C, Ottawa, Ontario, Canada K1Y 4H7
+b FaculO, of Administration, Universi~ of Ottawa, Ottawa, Ontario, Canada K1N 6N5
+~Econometric Institute, Erasmus Universi O, Rotterdam, P.O. Box 1738, 3000 DR Rotterdam, Netherlands
+
+Received 1 February 1995; revised 1 September 1995
+
+Abstract
+The minimization of maximum completion time for scheduling n jobs on m identical parallel machines is an NP-hard
+problem for which many excellent heuristic algorithms have been developed. In this paper, the problem is investigated
+under the assumption that only limited information about the jobs is available. Specifically, processing times are not
+known for the jobs; rather, the ordering of the jobs by processing time is known.
+For the cases of two and three parallel machines, algorithms which cannot be improved upon with respect to worst
+case performance ratio are developed. For the case of four parallel machines, an algorithm which is near optimal with
+respect to worst case performance ratio is developed. For arbitrary m, an algorithm which produces solutions whose
+value is at most five-thirds times the optimal value is presented. Finally, it is shown that as the number of machines gets
+arbitrarily large, the best possible ordinal algorithm has worst case performance ratio of at least 3/2.
+Kevwords: Heuristic scheduling; Parallel machine scheduling
+
+!. Introduction
+
+The problem of minimizing the maximum completion time for scheduling n jobs on m identical parallel
+machines (which is denoted by P IICmaxas in [5]), and its well-known relatives the partition problem and the
+subset-sum problem, have fascinated many researchers for several decades. Many excellent algorithms have
+been developed, and almost any (pragmatically) reasonable level of performance may be obtained in modest
+computer time using various approximation schemes. An excellent review may be found in [5].
+The p r o b l e m P 11Cmaxis defined as follows:
+
+Given a set J = { 1..... n} of n jobs, where job i has non-negative processing time ai, partition the job set
+into m subsets J 1 . . . . , J,, so as to minimize the maximum sum of processing times of the jobs in any of the
+subsets.
+* Corresponding author.
+This work was supported under Natural Sciencesand Engineering Research Council (NSERC) of Canada operating grant number
+A2507.
+0167-6377'96/$15.00 £ 1996 Elsevier Science B.V. All rights reserved
+SSDI 0 1 6 7 - 6 3 7 7 ( 9 5 ) 0 0 0 5 8 - 5
+
+224
+
+W.-P. Liu et al. / Operations Research Letters" 18 (1996) 223 232
+
+In the context of machine scheduling, subset J~ contains the jobs which are assigned for processing on
+machine j.
+In the current research, it is assumed that the values of the processing times a~ are unknown, but that the
+order of the jobs by non-increasing processing time is known, i.e., without loss of generality that
+al >t a 2 >/ ... >1 a n. Algorithms will be developed which depend only upon this rank order data, and the
+quality of the algorithms will be evaluated by their worst case performance ratios with respect to the actual
+(unknown) data.
+For example, suppose m = 2, J = {1, 2} and by assumption a~ ~> a2. The optimal value is al, and this is
+achieved by the algorithm which places job i on machine i. The algorithm which places both jobs on machine
+1 has a worst case performance ratio of 2, and this occurs for the case of a~ = a2.
+More generally, algorithms which utilize only ordinal (rank) data rather than actual magnitudes will be
+called ordinal algorithms.
+Optimal ordinal algorithms exist for a number of well-known problems. The shortest processing time rule
+optimally solves the single machine and the identical parallel machine scheduling problems with minimization of mean completion time as the objective [2], and the greedy algorithm solves the maximum weight
+sum problem over independent sets in a matroid [4]. A polynomial asymptotically exact algorithm for the
+two machine no wait flow shop problem which uses only ordinal data has also been developed [1]. Finally,
+Liu and Sidney use an ordinal data model similar to the one used in the current work for the bin packing
+problem I-6] and for a packing problem with a target center of gravity [7].
+Our main results (Section 2) are summarized in Table 1.
+
+2. General upper bound
+
+Let H denote the value of the heuristic solution given by any of the algorithms for some problem, and let
+OPT denote the corresponding optimal value. Thus, for any problem the measure of the quality of an
+algorithm will be given by the worst case performance ratio sup {H/OPT}, where the supremum is taken over
+all instances of the problem. Let ~i denote the sum of the processing times assigned to machine i (denoted by
+k
+n
+Mi), let ni = the number of jobs assigned to machine i, and let Af = ~j=i
+aj. Finally, let b = A1n = Y~=
+~ ai.
+The following lemma is trivial to prove.
+Lemma 1. Suppose that al >~ a2 >/ "'" >/ ai, ~ = t
+
+)tj >/ 1 and 0 ~< 2j (1 <<.j <~ i). T h e n ai <~ Z~-~ 2jaj.
+
+Lemmas 2 and 3 establish some general properties which provide direction in the search for "good"
+algorithms for P I}Cmax.
+
+Table 1
+Problem
+name
+
+N u m b e r of
+machines
+
+Worst case
+performance ratio
+
+Ratio
+tight?
+
+P2 IJCm,x
+P3 IIC ....
+P4II Cm.x
+
+2
+3
+4
+
+4/3
+7/5
+101/70
+
+Yes
+Yes
+
+Pm IICmax
+
+m
+
+m--I
+1+ - -
+
+No
+
+Pm IICmax
+
+AS m ~ inf
+
+~>3/2
+
+?
+
+,~ + Vm/2 7
+
+?
+
+225
+
+W.-P. Liu et al. / Operations Research Letters 18 (1996) 223-232
+
+Lemma 2. Suppose that an algorithm a for Pm It Cmaxdoes not have the following two properties:
+(i) jobs l to m are assigned to different machines;
+(ii) jobs i and 2m + 1 - i are assigned to the same machine.
+Then the algorithm has a worst case performance ratio of at least 3/2.
+Proof. First, if 1 ~< i < k ~< m and jobs i and k are assigned to the same machine, then algorithm cr will give
+a p e r f o r m a n c e ratio of at least 2 for the p r o b l e m given by the data a~ = 1 (1 ~<j ~< m) and aj = 0 otherwise.
+Suppose that condition (i) holds, but not condition (ii). Either of two cases must hold.
+Case 1: If at least three jobs on the set { 1, ..., 2m} are assigned to one machine, then a gives a performance
+ratio of at least 3/2 for the data given by a i = 1 (1 ~<j ~< 2m) and a~ = 0 otherwise ( O P T = 2 in this case).
+Case 2: If case 1 does not hold (nor condition (ii)), then there exist a machine h and two jobs i and k,
+1 ~< i < k ~< 2m, such that i + k < 2m + 1, and both i and k are assigned to machine h. These conditions
+imply that i ~< m - 1 and k < 2m. F o r the p r o b l e m given by the data
+
+aj=
+
+1,
+
+1 <~j<~i,
+
+1/2,
+
+i+ 1 ~<j~<2m--i,
+
+0,
+
+2m--i+
+
+1 =j,
+
+algorithm cr gives a performance ratio of at least 3/2 ( O P T = 1 in this case).
+
+[]
+
+Lemma 3. Suppose that an algorithm a for Pm L]Cmaxwith n jobs schedules nijobs on machine i. Then the worst
+case peJ?~rmance ratio is at least maxi {ni } /F n/m ].
+Proof. The stated worst case p e r f o r m a n c e ratio is achieved when all a~'s are equal.
+
+[]
+
+N o t e that LB = max{a~, a,, + am+ 1, b/m} is an obvious lower b o u n d for p r o b l e m size m.
+Next we provide an algorithm for the m machine case, whose worst case performance ratio will be
+c o m p u t e d in T h e o r e m 1, and then used in the analysis of the two machine case.
+
+Algorithm P,.
+Jobs are assigned to machines as follows: F o r 1 ~< i ~< Lm/2j
+
+{ai } u {a2m+ 1 -i+k~.,+r~m~lk >1 0}.
+ForLm/2j+
+
+1 <<,i<~m
+
+',ai}w{az,,+,-i+klm+r,,/2])lk >>-0}u{a3m+,
+
+i+k,,.+rm/z])lk >/0}.
+
+The assignments given by algorithm P,. for the case of m = 7 are illustrated in Fig. 1.
+Given any machine i, the notation [h] denotes the index of the hth j o b to be assigned to machine i.
+
+Lemma 4. ~i - ai <, xAn+l (£for each h ~> 2, [h] - [1] = [h] - i/> (h - l)(1/x),
+Proof. Follows from L e m m a 1.
+
+[]
+
+Theorem 1. For m >~ 2, algorithm P,, gives a worst case performance ratio no greater than
+(m - 1)/(m + I-m/2]) and for all values o f m >1 2 there are instances of P,, which achieve this ratio.
+
+1+
+
+W.-P. Liu et al. / Operations Research Letters 18 (1996) 223 232
+
+226
+
+Machine 1:
+
+1
+
+14
+
+25
+
+36
+
+....
+
+Machine 2:
+
+2
+
+13
+
+24
+
+35
+
+....
+
+Machine 3:
+
+3
+
+12
+
+Machine 4:
+
+4
+
+11
+
+18
+
+22
+
+29
+
+33
+
+40
+
+....
+
+Machine 5:
+
+5
+
+10
+
+17
+
+21
+
+28
+
+32
+
+39
+
+....
+
+Machine 6:
+
+6
+
+9
+
+16
+
+20
+
+27
+
+31
+
+38
+
+....
+
+Machine 7:
+
+7
+
+8
+
+15
+
+19
+
+26
+
+30
+
+37
+
+....
+
+23
+
+34
+
+....
+
+Fig. 1. Illustration of Algorithm P,n for m = 7.
+
+Proof. T h e p r o o f of T h e o r e m 1 begins with the following lemma. T h e p r o o f of the lemma, which consists of
+simple a l g e b r a i c m a n i p u l a t i o n s , m a y be f o u n d in [8].
+L e m m a 5. T h e f o l l o w i n g relationship holds:
+2A~'+ 1
+
+if m is even and 1 <~i < . m - 1 ,
+
+3(m - i + 1)
+2A7+ 1
+3(m-i+l)+l
+
+(~i--ai)~
+
+(1)
+
+i f m is odd and 1 <~ i <<.(m - 1)/2,
+
+n
+
+2Ai + l
+
+if m is odd and (m + 1 ) / 2 + 1 ~ < i ~ < m - 1 .
+
+3(m - i + 1)
+
+R e t u r n i n g to the p r o o f of T h e o r e m 1, we c o n s i d e r three cases.
+Case 1: m is even and 1 <<.i <~ m - l, or m is odd and (m + l)/2 + 1 ~ < i ~ < m -
+
+~i = ai q - ( ~ i - -
+
+al) <~ ai +
+2A~
+
+ai
+
+3(m-i+
+
+2A7+ t
+3(m - i + 1)
+2b
+
++
+1)
+
+3(m-i+l)
+
+2
+( 3 ( m - i + l ) )
+- 3 ( m - - - - / + 1)
+-2
+ai--Ail
+<~
+
+3m -- 5i + 3
+3(m--i+
+
+2b
+
+al +
+
+1)
+
+3(m--i+l)
+
+3°-5/+3
+
+2o
+
+-3(m--i+l)
+
+ai+3(m--i+l)
+
+5o
+
+5i+3
+
+3(m -- i + 1) m a x
+
+(by L e m m a 5)
+
+ai,
+
+2b
++ 3(m - i + 1)
+
+1.
+
+W.-P. Liu et al. / Operations Research Letters 18 (1996) 223-232
+
+-2
+
+t5m
+
+227
+
+LB, m is even,
+
+5m - 9 LB,
+[3m - 3
+
+m is odd and ( m + 1 ) / 2 + 1 ~ i ~ < m -
+
+1.
+
+Case 2: m is odd and 1 <~ i <~ (m - 1)/2.
+:~i = ai + (~i - - a i ) <~ ai 4
+
+:
+
+1
+
+3(m-i+
+
+( 3 ( m - i + l ) + l )
+1)+ 1
+2
+a~-A~
+
+3m -- 5i + 4
+3(m-i+
+
+1)+ 1
+
+ai nt-
+
++3(m-i+
+
+1)+ 1
+
+1)+ 1
+
+2m
+
+3(m-i+l)+lmax
+
+2b
+
+2b
+3(m-i+
+
+3m -- 5i + 4
+ai -t3(m--i+ 1)+ 1
+3(m--i+
+~<
+
+(by L e m m a 5)
+
+2A]
+2b
+~3(m-i+
+1)+ 1 3(m-i+
+1)+ 1
+
+a i
+
+2
+
+~<
+
+2A7+ 1
+3(m-i+l)+
+
+(b)
+1)+ 1
+
+al,
+
+5m- 1
+~< - - LB.
+3m+ l
+Case 3: i = m (even and odd) and i = (m + 1)/2 f o r m odd. The p r o o f for this case, available in [-8], is similar
+to those of cases 1 and 2, and is left as a reference.
+With cases 1--3 proved, the first part of the proof, namely that the worst case performance ratio is b o u n d e d
+from a b o v e by 1 + (m - 1)/(m + rm/2-]), is complete.
+T o show the tightness of the 1 + (m - 1)/(m + rm/2~) b o u n d for each m ~> 2, consider a p r o b l e m instance
+consisting of (m - 1)jobs of size 1 and (m - 1)(m + ~m/2-])jobs of size 1/(m + rrn/2~). One can easily verify
+that O P T = 2 and that am = 2 + 2(m - 1)/(m + rm/2~). This gives
+
+~,~
+-1+
+OPT
+
+(m - 1)
+(m + ~m/2~)
+
+as claimed.
+This completes the p r o o f of T h e o r e m 1.
+
+[]
+
+3. Upper bound for two, three and four machines
+While the a b o v e algorithm gives us a guarantee for all values of m, it would be desirable to i m p r o v e
+upon this b o u n d whenever possible. P r o c e d u r e C R E A T E below takes as input the n u m b e r of machines
+m and a desired worst case p e r f o r m a n c e ratio r, and attempts to find an ordinal algorithm which
+achieves r.
+
+228
+
+W . - P . L i u et al. / Operations Research Letters 18 (1996) 223 232
+
+Procedure
+
+CREATE
+
+1. F o r 1 <~ i <~ m / r
+r--1
+Xi --
+
+~i :
+
+m--i'
+
+Form/r<i<~m-r
+
+xi = -- ,
+m
+
+O.
+
+1
+ir
+
+)'i = -- -- 1.
+m
+
+For i = m
+2 ( r - 1)
+(m-l)'
+
+x,,
+
+2i
+
+0.
+
+2. F o r 1 ~ < i ~ < m - - 1
+
++1}
+For i = m
+m
+Xm
+
+=
+
+l 1 °+1'1 t
++1
+
+.
+
+Xm
+
+3. If for each k/> 1 the relation ~i%ll {h e J~lh <~ k}l /> k holds then an ordinal algorithm which achieves
+r m a y be obtained by altering J~ through executing steps (a) and (b) below as required:
+(a) eliminate a j o b from J~;
+(b) replace a j o b h in Ji with a j o b h' > h.
+Step 1 a b o v e generates an inequality which, when satisfied, guarantees that ~i ~< rLB. F o r example, if
+1 ~< i ~< m - 1, the inequality is
+Ai
+O~i <~ a i q- x i
+
+- - a i q- b - - A
+xi
+
+~<ai(1 + 2 i - ixi) + m x i ( b )
+
+(since iai <~Ail)
+
+~<(1 + ).i - ixi + m x i ) L B
+
+(since 1 + ).i - ixi >~ O)
+
+= rLB
+
+(by step 1).
+
+(2)
+
+F o r i = m, similar analysis yields a,, ~< rLB provided r ~ 1 + (m - 1)/(m + 1), a condition which will be
+satisfied for all "useful" values of r. Thus, provided r ~< 1 + ( m - 1)/(m + 1), the inequalities in step
+1 guarantee that the b o u n d of r is satisfied.
+In step 2, for each i ~< m a set J~ which satisfies the inequalities of step 1 is found. F o r i ~< m - 1, the
+defining conditions in step 2 are based on the observation that 1 + L(k + 2~ - i)/x~J represents the m a x i m u m
+n u m b e r of elements ~<k that can be assigned to J~ so that L e m m a 1 applied to J~ will yield (3). F o r i = m, the
+corresponding expression is
+2+
+
+[k- (m
+i x+=1)
+
+W.-P. Liu et al. / Operations Research Letters' 18 (1996) 223 232
+
+229
+
+Step 3 states that if for each k the total of these maxima is at least k, then there is a feasible ordinal
+algorithm which achieves r, and at least one such algorithm is easily generated from the sets given in step 2.
+Application of Procedure C R E A T E yields algorithms for the two, three and four machine cases as follows:
+
+Two machines: Algorithm P(2)
+With m = 2 and r = 4/3, Procedure C R E A T E produces the partition P2 (the special case of algorithm
+P,, for m = 2), so we take P(2) = P2-
+
+Three machines: Al#orithm P(3)
+With m = 3 and r = 7/5, Procedure C R E A T E gives xl = 1/5, x 2 =
+
+X 3
+
+=
+
+2/5 and, at the end of step 2,
+
+J1 = [ 1 } u { 6 + 5i]i >~0},
+
+' ~to{5+5ili>~O}u{7+5ili>~O},
+J 2 ~--- ,~2~
+J3 -- 13, 4} w {7 + 5ili >>-0}to{9 + 5ill >~0}.
+O n e realization of step 3 yields the algorithm P,, for m = 3, so we take P(3) = P3.
+
+Four machines: Algorithm P(4)
+With m = 4 and r = 13/9, Procedure C R E A T E allows us a choice in step 3, one possible result of which is
+Jl
+
+~
+
+[1}to{8 + 7i[i >~0},
+
+J2 =
+
+{2}to{7+ 14i[i~>0}w{ll + 14ili~>0}u[16+
+
+J3 =
+
+u' ~
+~3,
+
+{6+ 14ili>~0}u{9+
+
+14ili>~0~,
+
+1 4 i l i > ~ 0 } w { 1 2 + 14iti>>,O}u{14+ 1 4 i l i ~ > 0 } w { 1 8 + 14i[i>~O I,
+
+J4 = 14, 5} u { 1 0 + 14ili ~> 0}w{13 + 14ili/> 0}w{17 + 14ili >~ 0 } w [ 1 9 + 14i]i >~ 0~.
+Theorem 2. Algorithms P(2), P(3), and P(4) yield worst case performance ratios of 4/3, 7/5, and 101/70
+
+respectively. These bounds are tiyht for m = 2 and 3. For m = 4, a lower bound on worst case performance ratio
+is 23/16 (so that the proven worst case performance ratio of 101/70 is less than 0.4% above the lower bound).
+Proof. The stated upper b o u n d s for P(2) and P(3) are guaranteed by the use of Procedure C R E A T E to
+synthesize the algorithms. While C R E A T E provides a guarantee of 13/9 for P(4), we shall prove the better
+b o u n d of 101/70.
+To prove the lower bounds, we deal with each algorithm separately.
+To prove tightness for P(2), we m a y without loss of generality assume that n = 4, and that al is assigned to
+machine Ml. If an algorithm assigns at least o n e o f a 2 , a 3 or a4 to MI, then for al = 3, a2 = as = a4 = 1 we
+have O P T = 3 and H >~ 4. O n the other hand, if an algorithm assigns a2, a3 and a4 to M2, then for
+al = a 2 = a 3 = a 4 =
+1 we have O P T = 2 a n d H = 3 .
+We now prove tightness for P(3). By L e m m a 2, we m a y assume that jobs i and (7 - i) are assigned to
+machine i, for 1 ~ i ~ < 3 . C h o o s e n = 11. Then ( i ) n l ~<2, for otherwise the data set al = 1,
+a2 . . . . .
+all = ~ gives H > ~ and O P T = 1; (ii) n2 ~<4, for otherwise the data set al = a 2 = 1 and
+a3 . . . . . all = ~ gives H ~> ~ and O P T = 1; (iii) j o b 7 must be assigned to Ms, for otherwise the data set
+al = a2 = 1, a3 . . . . .
+av = ½, as . . . . .
+a, = 0 gives H ~> ~ and O P T = 1; (iv) n 3 ~< 4, for otherwise the
+data set al . . . . .
+a4 = 1, as . . . . .
+a7 = ½ and as . . . . .
+all = ¼ gives H >~ 2 + ½ + ¼(21 = ~ and
+O P T = 2. Obviously one of(i), (ii) and (iv) c a n n o t be true since n = 11. Therefore it is impossible to improve
+the ratio 7/5.
+The p r o o f of the lower b o u n d of 23/16 is conceptually straightforward but somewhat lengthy, and is left as
+a reference [8].
+
+W.-P. Liu et al. / Operations Research Letters 18 (1996) 2 2 3 - 2 3 2
+
+230
+
+In order to show that the b o u n d will be achieved we can take the following example:
+
+Pl = P2 = 70, P3
+
+.
+
+.
+
+.
+
+.
+
+Pll = 14, Pt2 . . . . .
+
+.
+
+P25 = 1.
+
+[]
+
+4. L o w e r bound
+
+F o r m machines and n jobs, the set of ordinal algorithms is finite. Let T", denote this set, and let r " , give
+the smallest worst case performance ratio P,,. a m o n g the algorithms in T".. Then sup {P"nl n >~ 1} -= 1 + e"
+gives the smallest worst case performance ratio over all m machine problems. We show below that em ~> ½ for
+sufficiently large m.
+T h e o r e m 3. Let n >~ 2m. Then m >~ 18 implies that e m >1 1/2, i.e., the worst case performance ratio is
+
+>~3/2.for
+
+all algorithms in T",.
+Proof. Assume that 1 + e m < 3/2. By L e m m a 2, we m a y without loss of generality assume that jobs i and
+
+2m + 1 - i are assigned to machine i for 1 ~< i ~ m.
+F o r each i, 1 <~i<.r2m/3 ~, consider the problem instance given by al . . . . .
+a i = 1 and
+ai+l . . . . .
+a,=(m-i)/(n-i).
+F o r this problem instance, it is easy to see that O P T < I
++ (m - i)/(n - i). In order for 1 + e" to be an upper b o u n d on the worst case performance ratio, we need
+1 + (ni -- 1)((m -- i)/(n
+
+-- i))
+
+(1 + (m -- i)/(n -- i))
+
+~ 1 +e",
+
+which is written as
+
+ni~2+em+e"
+
+~
+
+,3,
+
+.
+
+For F2m/37+l<~i<,m
+consider
+a2"+2-i . . . . .
+a,=(i-1)/(n-(2m+
+O P T < 2 + ((i + 1 ) / ( n - (2m + 1 performance ratio, we need
+
+the problem instance given by al . . . . .
+a 2 m + l _ ~ = 1 and
+1-i)).
+F o r this problem instance, it is easy to see that
+i))). In order for 1 + e,, to be an upper b o u n d on the worst case
+
+2 + (n, - 2)((i -- 1)/(n - (2m + 1 - i)))
+
+4 1 +era,
+
+(2 + ((i - 1)/(n - (2m + 1 - i))))
+which is rewritten as
+
+n~ <<.3 + e" + 2era
+
+(n--(2m + l --i))
+~~ ]
+
+.
+
+(4)
+
+By (3) and (4), and letting 0 = [-2m/3 7,
+
+n i ~ ~ ( 2 + era+ em\-~-~-i_iJj+
+(
+
+n=
+i=1
+
+~(
+
+i=1
+
+3 + e m + 2 e " ( n - - 2 m-- - l + i ) )
+
+i=0+1
+
+1 --
+
+.
+
+(5)
+
+1
+
+Dividing (5) by n and letting n a p p r o a c h infinity yields
+o
+
+l~<e" ~
+i =: 1
+
+1
+
+m--i
+
++2e"
+
+~
+
+1
+
+~
+
+-
+
+i=0+1
+
+i
+
+1
+
+--e"
+
+m-1
+
+~
+
+i=m
+
+1
+
+-+2e"
+
+0 t
+
+,.-1 1
+
+~
+i:O
+
+-=--e"ck(m).
+t
+
+(6)
+
+W.-P. Liu et al. / Operations Research Letters 18 (1996) 223-232
+
+231
+
+Table 2
+m
+
+Lower bound
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+
+1.3333
+1.4000
+1.4375
+1.3704
+1.4539
+1.4542
+1.4485
+1.4775
+1.4776
+1.4744
+1.4891
+1.4892
+1.4872
+1.4961
+1.4961
+1.4947
+1.5000
+
+To evaluate the sums in (6), let r and s be positive integers with r ~< s. Thus
+
+~ 1
+
+[~+1,,2
+
+•=
+
+Jr-- 1/2
+
+(s_+ 1/2"]
+X
+
+Applying this inequality to (6) yields
+
+e,,,> (
+
+m-l/2
+
+1
+
+)
+
+(. m ~ 1 / 2
+~---~(m)~>qS-l(m)'
+In m - ~3-]-~ -- 1/2 + 2 In \[2m/3] - 1/2}
+
+(7)
+
+Straightforward calculations show that qS-l(m) > ½ for 18 ~< m ~< 20 and ¢(m) > ½ for 21 ~< m ~< 23. The
+reader may verify that for m >~ 3, ff(rn + 3) > ¢(m). Hence, for m >~ 18, the assumption that 1 + em < 3/2
+cannot hold. []
+Previously, we have shown that 4/3 and 7/5 are tight lower bounds on 1 + e 2 and 1 + e3 respectively, and
+that 23/16 is a lower bound on 1 + e4. For m = 5 to 17, the right-hand side of relation (7) is less than 1.5, and
+hence these right-hand-side values are lower bounds on 1 + e,, for these values of re. We may summarize our
+results in Table 2.
+
+5. Future directions
+We have described herein algorithms for parallel machine scheduling with ordinal data which are optimal
+with respect to worst case performance for two and three machines, near optimal for four machines, and
+whose worse case performance ratio is bounded by 1 + (m - 1)/(m + [ m / 2 ] ) for all other values of m.
+However, for m greater than 4, it is probable that algorithms with much better worst case performance than
+that of P,~ exist. The authors would propose as an open problem to find a "'generic" algorithm which achieves
+the best possible worst case performance ratio for each m. Numerical experiments show that the bound of
+
+232
+
+w.-P. Liu et al. / Operations Research Letters 18 (1996) 223 232
+
+1 + (m - 1)/(m + rrn/2J) given by Pm is n o t achievable t h r o u g h p r o c e d u r e C R E A T E for m / > 8. T h e a u t h o r s
+believe t h a t finding the "generic" a l g o r i t h m a b o v e will require s o m e new insights.
+T h e r e a r e m a n y o t h e r scheduling p r o b l e m s where ordinal, o r s o m e w e a k e r v a r i a n t of ordinal, a l g o r i t h m s
+c o u l d be developed, a n d we w o u l d p r o p o s e t h a t investigations to find g o o d a l g o r i t h m s for these p r o b l e m s
+w o u l d be of interest to the scheduling c o m m u n i t y .
+
+Acknowledgements
+The a u t h o r s wish to express their a p p r e c i a t i o n to Dr. H a n s K e l l e h e r of the I n s t i t u t ftir Statistik,
+O k o n o m e t r i e u n d O p e r a t i o n s Research, Universit~it G r a z , Austria.
+
+References
+[1] A. Agnetis, "No-wait flow shop scheduling with large lot size", Rap. 16.89, Dipartimento di Informatica e Sistemistica, Universita
+Degli Studi di Roma "La Sapienza", Rome, Italy, 1989.
+[2] W. Conway, W.L. Maxwell and L.W. Miller, Theory of Scheduling, Addison-Wesley, Reading, MA, 1967.
+[3] R.L. Graham, "Bounds on multiprocessing timing anomalies", SIAM J. Appl. Math. 17, 416 429 (1969).
+[4] E.L. LaMer, Combinatorial Optimization: Networks and Matroids, Holt, Rinehart and Winston, Toronto, 1976.
+[5] E.L. LaMer, J.K. Lenstra, A.H.G. Rinnooy Kan and D.B. Shmoys, "Sequencing and scheduling: algorithms and complexity",
+Centre for Mathematics and Computer Science Report BS-R8909, Stichting Mathematisch Centrum, Amsterdam, 1989.
+[6] W.-P. Liu and J.B. Sidney, "Bin packing using semi-ordinal data", Operations Research Letters 19 (1996) to appear.
+[7] W.-P. Liu and J.B. Sidney, "Ordinal algorithms for packing with target center of gravity", Order, to appear.
+[8] W.-P. Liu, J.B. Sidney and A. van Vliet, "Ordinal algorithms for parallel machine scheduling", Working Paper 95-57, Faculty of
+Administration, University of Ottawa, Ottawa, Ontario, Canada K1N 6N5, 1995.
+
+

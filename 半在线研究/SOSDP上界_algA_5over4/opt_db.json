@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "name": "LP/扫描管线速度优化知识库",
+    "updated": "2026-09-22",
+    "rules": "①任何代理写计算代码前必读全库；②新优化必须带实测数字入库（无数字不收）；③与正确性冲突的优化必须先做等价性验证（参照 E01/E02 的验证范式）。",
+    "baseline": "口袋2 一步+保序 m=4..30 全量 43981 情形+精确证书 = 102s（优化前单 m=18 浮点 23s）"
+  },
+  "techniques": [
+    {
+      "id": "E01", "name": "冗余约束块删除", "category": "constraint-reduction",
+      "problem": "mon_j{i}_s{kk} 等 O(m²) 行支配 LP 规模",
+      "technique": "识别被其他约束组传递蕴涵的整块约束（mon 被 kcap：j≤q₁≤a_m≤s 蕴涵），整块删除",
+      "effect": "行数 O(m²)→O(m)；m=18 浮点 23s→含精确化 6s",
+      "preconditions": "必须先做等价性验证（m=6..12 全一致）", "evidence": "fast_lp.py 验证1",
+      "cost": "一次性分析", "status": "VALID"
+    },
+    {
+      "id": "E02", "name": "结构强制参数消枚举", "category": "parameter-elimination",
+      "problem": "保序高度 h 枚举 0..nS，乘一整个 m 因子",
+      "technique": "用 firststep 结构证明 h=nS−1−jj 被强制（nofit/fit+srt），枚举退化为一",
+      "effect": "省 m 因子；与全枚举一致性已验证", "preconditions": "结构证明 + 对照实验",
+      "evidence": "fast_lp.py 验证2", "cost": "无", "status": "VALID"
+    },
+    {
+      "id": "E03", "name": "支撑行精确验证", "category": "verification",
+      "problem": "Fraction 全矩阵验证慢（证书非零行仅 ~10-20 条）",
+      "technique": "浮点 LP 定位 → 只对支撑行（非零 y）重建 Fraction 验 Aᵀy=0/btᵀy=0/bcᵀy=−1",
+      "effect": "精确验证提速 10 倍+", "preconditions": "见 P01 坑",
+      "evidence": "fast_lp.py exact_verify_support", "cost": "无", "status": "VALID"
+    },
+    {
+      "id": "E04", "name": "证书缓存复用", "category": "caching",
+      "problem": "相邻 (cnt,k) 重复解 LP",
+      "technique": "k 外 cnt 内迭代；缓存上次 (y,支撑行名)，先廉价复核命中则免解 LP",
+      "effect": "复用命中 601/37997（本项目命中偏低——权重对 cnt 敏感）；LP 密集型场景收益更大",
+      "preconditions": "行名匹配陷阱见 P02", "evidence": "fast_scan2.py", "cost": "缓存管理", "status": "VALID（收益依场景）"
+    },
+    {
+      "id": "E05", "name": "手证剪枝", "category": "problem-reduction",
+      "problem": "已手证的参数区还花机时扫",
+      "technique": "k=1（P2K1）、k≥m−2（P2K-top）等手证覆盖段默认跳过（--full 保留全量交叉验证）",
+      "effect": "m=12..30 少扫 5565 情形", "preconditions": "手证已过敌意复核",
+      "evidence": "fast_scan2.py", "cost": "无", "status": "VALID"
+    },
+    {
+      "id": "E06", "name": "多进程分片", "category": "parallelism",
+      "problem": "串行扫表慢",
+      "technique": "ProcessPoolExecutor spawn 上下文 + workers≤2（CPU 条款）+ chunksize≥4 摊薄启动",
+      "effect": "线性加速×workers；macOS 必须 spawn（fork+Accelerate 会崩）",
+      "preconditions": "CPU 条款：workers≤2、单扫描、nice 15", "evidence": "fast_scan.py",
+      "cost": "spawn 启动开销", "status": "VALID"
+    },
+    {
+      "id": "E07", "name": "断点续跑（分片即断点）", "category": "checkpointing",
+      "problem": "超时/被杀丢全部进度",
+      "technique": "jsonl 进度落盘，重跑跳过已完成；脚本带时间盒自退（8 分钟硬顶）",
+      "effect": "多次被杀的 26 万复核无损续跑 5-6 次完成", "preconditions": "断点记录必须区分 cert/hole/nocert（agent-1 曾错把 nocert 当 cert 假报全闭）",
+      "evidence": "pocket1b_progress.jsonl / fast_scan*_progress.jsonl", "cost": "无", "status": "VALID"
+    },
+    {
+      "id": "E08", "name": "机读进度行", "category": "observability",
+      "problem": "长任务黑箱，无法轮询消费",
+      "technique": "输出 done/total/pass/fail 进度行 + sidecar 文件",
+      "effect": "watcher/代理可轮询；进度可见即可控", "preconditions": "无",
+      "evidence": "agent-4 verify sidecar .vprog", "cost": "无", "status": "VALID"
+    },
+    {
+      "id": "E09", "name": "模型层级选择（体积<装箱<动力学）", "category": "model-selection",
+      "problem": "用最强模型（装箱枚举）打所有情形 = 浪费",
+      "technique": "先用最便宜足够模型（体积聚合），只在洞上升级（装箱/二步/保序）",
+      "effect": "口袋3 发现纯计数 P3C 后 LP 仅作佐证；口袋1 装箱后才需动力学",
+      "preconditions": "每层升级配消融", "evidence": "pocket3_counting.md", "cost": "分层判断", "status": "VALID"
+    },
+    {
+      "id": "E10", "name": "--once 拉取替代后台守候", "category": "communication",
+      "problem": "后台监视进程占槽、被收割、有孤儿风险",
+      "technique": "代理工具间隙跑 board_watch.py --once agentN（<1s 增量拉取）",
+      "effect": "零槽位零孤儿，粒度=工具调用间隙", "preconditions": "无",
+      "evidence": "board_watch.py --once", "cost": "无", "status": "VALID"
+    },
+    {
+      "id": "P01", "name": "坑：浮点 MARGIN 有理化失真", "category": "pitfall-precision",
+      "problem": "Fraction(1e-4)≠Fraction(1,10000)（二进制），曾造 43981 假洞",
+      "technique": "bc/bt 必须存精确 Fraction；只有二进制精确的矩阵系数（0,±1,±4,±5,±1.25）允许 F(float) 还原",
+      "effect": "修复后 43981 全过", "preconditions": "—", "evidence": "fast_lp.py 修复记录",
+      "cost": "—", "status": "RULE"
+    },
+    {
+      "id": "P02", "name": "坑：重名约束按名指派错位", "category": "pitfall-verification",
+      "problem": "SS/SJ/JJJ/JJ 重名行，按名找行复核会假 FAIL（曾误报 43041 条）",
+      "technique": "列平衡强制指派（非装箱名唯一匹配+装箱行由列残差唯一强制+多重集比对）",
+      "effect": "前 500 复测全 PASS", "preconditions": "—", "evidence": "verify_certs.py（agent-4 修复）",
+      "cost": "—", "status": "RULE"
+    },
+    {
+      "id": "P03", "name": "坑：自动重启包装杀不死", "category": "pitfall-lifecycle",
+      "problem": "until cmd; do sleep 2; done 复活壳被 kill 后复活",
+      "technique": "禁止自动重启包装；重试只能写在脚本内部断点续跑里",
+      "effect": "—", "preconditions": "—", "evidence": "2026-09-22 verify_certs 事件",
+      "cost": "—", "status": "RULE（禁令）"
+    },
+    {
+      "id": "P04", "name": "坑：断点状态混淆", "category": "pitfall-checkpoint",
+      "problem": "断点把 nocert/hole 当 cert 跳过→假报全闭",
+      "technique": "断点记录区分状态类型；跨 run 结果对拍",
+      "effect": "agent-1 自查抓到", "preconditions": "—", "evidence": "agent-1 续跑 bug 修复记录",
+      "cost": "—", "status": "RULE"
+    }
+  ]
+}
