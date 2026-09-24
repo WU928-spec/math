@@ -6,21 +6,25 @@
 ## 目录结构与三条线
 
 ### SOSDP上界_algA_5over4/（上界线·当前主项目）
-CKK 2012 Algorithm A 竞争比 ≤ 5/4 的证明：razor 带 (P) 攻坚全程（2026-09-19..23）。
-- **second_proof.md** —— razor 带 (P) 的 LP 第二证明·完整版（本线主成果，今日闭合：端点三段 + uncond 层 T2+B4 + 薄层 α'/β，全域 ∀m）；
-- **proof.md** —— 第一证明（原始证明+我们路线融合版，五轮敌意复核）；
-- **razor_closure.md** —— 闭合总结（组装级终审 VALID）；
-- main_alpha_tight.md / main_beta_proof_v2.md / a3_beta_hi.md —— 薄层 α'/β 证明全文；
-- hole_close_lemma.md、pocket1/2/3*.md —— 洞族与各口袋攻击笔记；
-- BOARD/JEL/SEMANTICS/LP_CONSTRAINTS/PROTOCOL/OWNERS/STATUS/NOTES/OPTIMIZE/opt_db.json —— 研究账本与协作协议；
-- artifact/（制品包）、archive/（reports 代理报告 / drafts 废稿 / data 大证书 gzip）；
-- CKK2012_SOSDP_Algorithms_better_than_LPT.md —— 原始论文（md 版）。
+CKK 2012 Algorithm A 竞争比 ≤ 5/4 的证明（m ≥ 4 半在线递减到达）。
+- **完整证明_5over4.md** —— ★ **本线现行定稿**。第 I 部分＝第一证明（极小反例，引理 T''）+ 第 II 部分＝razor 带 LP 第二证明（∀m 零证书：端点三段 + uncond 层 T2+B4 + 薄层 Qcount 闭式）+ 附录 A–E；
+- CKK2012_SOSDP_Algorithms_better_than_LPT.md —— 原论文（md 版，背景资料）；
+- LP_CONSTRAINTS.md —— 22 条 LP 角落约束逐条合法性审计（定稿附录 E / B.1 引用）；
+- hole_close_lemma.md —— mon2 / 保序引理出处（定稿附录 B.5 引用）；
+- 作废引理_sliver紧性.md —— sliver 紧性引理作废记录 + 反例（定稿修订记录引用）；
+- pocket3_counting.md —— 引理 P3C（口袋 3 纯计数闭合；有效，尚未并入定稿 §6'）；
+- **archive/** —— 过程文献与历史版本：`reports/`（多代理时代工作报告）、`drafts/`（废稿）、`data/`（大证书 gzip，gunzip 即恢复）、`superseded/`（已被定稿取代的证明旧版）、`collab/`（BOARD/PROTOCOL/OWNERS 等协作基建）；
+- **artifact/** —— 口袋 2 计算闭合证据包（证书 + 独立复核器 + manifest.sha256）；
+- **code/** —— 复用模块与验证器在顶层；`code/archive/`＝一次性探测脚本，`code/data/`＝可再生中间产物。
+
+> 历史版本说明：`proof.md` 已删（与定稿第 I 部分逐字节相同）；`second_proof.md`、`razor_closure.md`、`LP_ROUTE.md`、`main_alpha_tight.md`、`main_beta_proof_v2.md`、`a3_beta_hi.md` 等已移入 `archive/superseded/`——**它们含已作废的 sliver 紧性引理，勿作依据**。
 
 ### SOSDP下界_SSW系列/（下界线）
 Seiden–Sgall–Woeginger 2000 系列下界与探索：
 - SSW_m3下界_c等于1加根号37除6_完整证明.md —— m=3 下界 (1+√37)/6 完整证明（对抗序列+配平分析）；
 - m2证明_紧界7除6.md —— m=2 最优 LPT 7/6 完整证明；
-- m4下界试点扫描报告.md、m4_search/、research/（ssw_m4_dim01_construction.md）—— m=4 下界构造与试点扫描（gap 下界侧探索）；
+- m4下界试点扫描报告.md —— m=4 显式对抗构造（9 任务序列 1,1,1,r,r,r,s,s,s，博弈值恰 (1+√37)/6）+ 25000+ 实例扫描记录；
+- m4_search/ —— 上述扫描的计算件（脚本 + r3/f2/scan2/fine334 结果）；archive/ssw_m4_dim01_construction.md —— 同一构造的早期草稿（推理步骤有误，已被正式报告取代）；
 - SSW_m3_配平图.png —— m=3 配平图。
 
 ### 序数调度_n4/（近亲模型线，独立问题）
@@ -33,6 +37,10 @@ Liu–Sidney–van Vliet 1996 开启的 ordinal scheduling 模型（与 SOSDP �
 ### 方法库/（跨线沉淀）
 - 复盘_可复用证明技巧_2026-09.md —— 可复用技巧（LP 证书/组合计数/动力学/证明工程纪律）；
 - 可复用引理库_2026-09.md —— 32 条可复用引理（精确陈述+证明状态+复用场景）。
+
+> ⚠️ **2026-09-24 校订**：两份文档原把 sliver 紧性引理（引理库 L5 / 技巧 B3）列为"最推荐、最可移植"的一条，
+> 该引理已于同日被证伪（见 `SOSDP上界_algA_5over4/作废引理_sliver紧性.md`）。现已改标【已作废】并把错因析出成教训；
+> 依赖它的 L25/L26 降级为"待复核·未被采用"。**引用这两份文档前请先确认条目标注。**
 
 ## 线间关系
 上界线证明的 razor 带（5/4 证明最硬段）正是上界与下界 gap 的硬点；下界线的 m=4 探索（把 (1+√37)/6 往上抬）与上界线的 razor 带在数值结构上同域。序数调度线独立（不同模型），仅方法论共享（对抗构造、配平图、计算封底）。

@@ -1,6 +1,6 @@
 """Algorithm A (CKK 2012) <= 5/4 证明项目工具箱.
 
-移植自 k3_research/m4_search（修复死路径 /mnt/agents/output），扩展：
+移植自本项目早期 m=4 下界搜索件（原 k3_research/m4_search，含一个死路径 /mnt/agents/output，已清除），扩展：
 - fallback_event: 记录 fallback 事件全貌（负载、机器件数、单子机），供口袋定向模糊测试
 - opt_exact: Fraction 精确 OPT（小 n），供符号断言的数值裁决
 运行环境: /Users/a123456/math/.venv (python3.12)
