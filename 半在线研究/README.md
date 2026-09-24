@@ -8,7 +8,9 @@
 ### SOSDP上界_algA_5over4/（上界线·当前主项目）
 CKK 2012 Algorithm A 竞争比 ≤ 5/4 的证明（m ≥ 4 半在线递减到达）。
 - **完整证明_5over4.md** —— ★ **本线现行定稿**。第 I 部分＝第一证明（极小反例，引理 T''）+ 第 II 部分＝razor 带 LP 第二证明（∀m 零证书：端点三段 + uncond 层 T2+B4 + 薄层 Qcount 闭式）+ 附录 A–E；
-- CKK2012_SOSDP_Algorithms_better_than_LPT.md —— 原论文（md 版，背景资料）；
+- CKK2012_SOSDP_Algorithms_better_than_LPT.md —— 原论文（md 版，背景资料）；⚠️ 该摘要件**只收录了 §2（5/4）**，未收录 §3；
+- **CKK2012_m3最优上界_A3_完整证明.md** —— ★ 补齐上述缺口：原文 §3（m=3 专用算法 A3，竞争比恰为 c=(1+√37)/6，与 SSW 下界相等故 m=3 完全闭合）的逐条严谨还原。含 A3 定义、定理 2、O1–O9 全部观察、Case 1/2 全套子情形，并把原文 "elementary calculations"／"hence" 带过的步骤逐一补出（基例 n≤5、p4+p9≤2/3、L0/L 是 C* 下界等）；
+- **code/m3_a3_verify/** —— 该文档的验证脚本：`bound_lp.py`（逐条数值界的精确 LP）、`base_case_lp.py`（基例 n≤5 逐分支 LP，得 R=c）、`base_case_random.py` / `a3_crosscheck.py` / `n9_claim.py`（随机对拍与中间界的适用性检验）；
 - LP_CONSTRAINTS.md —— 22 条 LP 角落约束逐条合法性审计（定稿附录 E / B.1 引用）；
 - hole_close_lemma.md —— mon2 / 保序引理出处（定稿附录 B.5 引用）；
 - 作废引理_sliver紧性.md —— sliver 紧性引理作废记录 + 反例（定稿修订记录引用）；
