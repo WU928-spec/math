@@ -1,0 +1,619 @@
+########## PAGE 1 (full) ##########
+94b657fef61d664d39a872a3: D26092001217ZK00
+Operations Research Letters 40 （2012） 349-352
+Contents lists available at SciVerse ScienceDirect | Operations
+Research
+Letters
+Operations Research Letters
+ELSEVIER | journal homepage: www.elsevier.com/locate/orl
+Algorithms better than LPT for semi-online scheduling with decreasing
+processing times
+T.C.E. Cheng°，Hans Kellerer b*， Vladimir Kotovc
+a Department of Logistics and Maritime Studies, The Hong Kong Polytechnic University, Kowloon, Hong Kong
+D Institut fuir Statistik und Operations Research, Universitat Graz, Universititsstrape 15, A-8010 Graz, Austria
+Belarussian State University, Faculty of Applied Mathematics and Computer Science, Prospekt Nezavisimosty 4, 220030 Minsk, Belarus
+ARTICLE INFO | ABSTRACT
+Article history： | We consider the semi-online multiprocessor scheduling problem with m identical, parallel machines
+Received 20 January 2012 | to minimize the makespan, where the jobs arrive in decreasing order of processing times. The famous
+Received in revised form | Longest Processing Time （LPT） algorithm by Graham （1966） ［4］ for the classical offline multiprocessor
+8 May 2012 | scheduling problem schedules thejobs in decreasing order of processing times and has a worst-case bound
+Accepted 16 May 2012 | of 4/3-1/（3m）. So far, no algorithm with a better competitive ratio than the LPT algorithm has been given
+Available online 4 June 2012
+for the semi-online scheduling problem with decreasing processing times. In this note, we present a 5/4-
+Keywords： | competitive algorithm for m ≥ 3 and an algorithm that is the best possible for m = 3, i.e. an algorithm
+Online algorithms | with competitive ratio （1 + v37）/6.
+Semi-online algorithms | © 2012 EIsevier B.V. All rights reserved.
+Competitive ratio
+Multiprocessor scheduling
+1. Introduction | has since been published. The best heuristic is due to Fleischer
+and Wahl ［3］. They designed an algorithm with a competitive
+In the classical multiprocessor scheduling problem, there | ratio smaller than 1.9201, when the number of machines tends to
+are given n independent jobs with nonnegative processing | infinity.
+times p1，•..， Pn that have to be scheduled nonpreemptively on | In practice, problems are often not really online or offline
+m identical, parallel machines M1，•.，Mm with the objective | but somewhere in between. This means that, with respect to
+of minimizing the makespan. In the online version of the | the online problem, some further information about the jobs is
+multiprocessor scheduling problem, each job must be immediately | available. This additional information allows the improvement of
+and irrevocably assigned to one of the machines without any | the performance of the best solution algorithm with respect to
+knowledge of future jobs. The performance of an online algorithm | the online problem. These problems are often vaguely called semi-
+is measured by its competitive ratio, i.e. the worst-case ratio with | online problems. We will investigate the semi-online scheduling
+respect to the optimum solution of the corresponding offline | problen with decreasing processing times （SOSDP），i.e.， we know that
+problem.In the sequel we will denote by C* the value of an optimal | Pj≥Di+i for allj≥1.
+solution of the offline problem.The total sum of the job processing | It is well-known that the offline multiprocessor scheduling
+times assigned to a machine M is called the load of machine M， | problem is strongly NP-hard by reduction from the 3-partition.
+and is denoted by &（M）. Moreover, we will identify jobs with their | The most popular heuristicis the Longest Processing Time algorithm
+corresponding processing times, i.e.， a job greater than x means a | （LPT for short） proposed by Graham ［4］. The LPT algorithm sorts
+job with processing time greater than x. | jobs in decreasing order of processing times and assigns them
+The online multiprocessor scheduling problem was first | one at a time in this order to the machine with the smallest
+investigated by Graham, who showed that the list scheduling | current load.The LPT algorithm has a worst-case performance ratio
+of 4/3 - 1/（3m）. Obviously, LPT can be used as an algorithm
+algorithm has a competitive ratio of exactly 2 - 1/m ［5.4］ and it is | for SOSDP. Many other approximation algorithms for offline
+the best possible for m ≤ 3 ［2］. A long list of improved algorithms | multiprocessor scheduling have been developed and analyzed. Let
+us especially mention the paper by Hochbaum and Shmoys ［6］，
+which provides a PTAS for this problem by using a family of dual
+* Corresponding author. | approximation algorithms.
+E-mail addresses: lgtcheng@polyu.edu.hk （T.C.E. Cheng）， | The problem SOSDP was first studied by Seiden et al. ［7］. They
+hans.kellerer@uni-graz.at （H. Kellerer）， kotovVM@yandex.ru （V. Kotov）. | show that LPT with a competitive ratio of 7/6 for m = 2 is
+0167-6377/$- see front matter © 2012 Elsevier B.V. All rights reserved.
+doi:10.1016/i.orl.2012.05.009
+========== PAGE 1 COL L ==========
+Operations Research Lette
+Contents lists available at
+Operations Res
+ELSEVIER | journal homepage: www.
+Algorithms better than LPT for semi-onlir
+processing times
+T.C.E. Cheng°，Hans Kellerer b*， Vladimir Kotov
+a Department of Logistics and Maritime Studies, The Hong Kong Polytechnic University, Kow
+D Institut fuir Statistik und Operations Research, Universitat Graz, Universititsstrape 15, A-8
+Belarussian State University, Faculty of Applied Mathematics and Computer Science, Prosp
+ARTICLE INFO | ABSTRACT
+Article history： | We consider the semi-online
+Received 20 January 2012 | to minimize the makespan, w
+Received inrevisedform | Longest Processing Time （LPT
+8 May 2012 | scheduling problem schedules
+Accepted 16 May 2012 | of 4/3-1/（3m）.So far, no algo
+Available online 4 June 2012
+for the semi-online schedulins
+Keywords： | competitive algorithm for m
+Online algorithms | with competitive ratio （1 + <
+Semi-online algorithms
+Competitive ratio
+Multiprocessor scheduling
+1. Introduction
+In the classical multiprocessor scheduling problem, there
+are given n independent jobs with nonnegative processing
+times p1，•..，Pn that have to be scheduled nonpreemptively on
+m identical, parallel machines M1，•.，Mm with the objective
+of minimizing the makespan.In the online version of the
+multiprocessor scheduling problem, each job must be immediately
+and irrevocably assigned to one of the machines without any
+knowledge of future jobs. The performance of an online algorithm
+is measured by its competitive ratio, i.e. the worst-case ratio with
+respect to the optimum solution of the corresponding offline
+problem.In the sequel we will denote by C* the value of an optimal
+solution of the offline problem.The total sum of the job processing
+times assigned to a machine M is called the load of machine M，
+and is denoted by & （M）. Moreover, we will identify jobs with their
+corresponding processing times, i.e. a job greater than x means a
+job with processing time greater than x.
+The online multiprocessor scheduling problem was first
+investigated by Graham, who showed that the list scheduling
+algorithm has a competitive ratio of exactly 2 - 1/m ［5,4］ and it is
+the best possible for m ≤ 3 ［2］. A long list of improved algorithms
+* Corresponding author.
+E-mail addresses: lgtcheng@polyu.edu.hk （T.C.E. Cheng），
+hans.kellerer@uni-graz.at （H. Kellerer）， kotovVM@yandex.ru （V. Kotov）.
+0167-6377/$- see front matter © 2012 Elsevier B.V.All rights reserved.
+doi:10.1016/i.orl.2012.05.009
+========== PAGE 1 COL R ==========
+94b657fef61d664d39a872a3:D260920012172K00
+ch Letters 40 （2012）349-352
+ble at SciVerse ScienceDirect | R%errtgms
+Letters
+Research Letters
+www.elsevier.com/locate/orl
+nline scheduling with decreasing
+ity, Kowloon, Hong Kong
+15,A-8010 Graz, Austria
+e, Prospekt Nezavisimosty 4, 220030 Minsk, Belarus
+online multiprocessor scheduling problem with m identical, parallel machines
+pan, where the jobs arrive in decreasing order of processing times. The famous
+le （LPT） algorithm by Graham （1966） ［4］ for the classical offline multiprocessor
+edules thejobs in decreasing order of processing times and has a worst-case bound
+no algorithm with a better competitive ratio than the LPT algorithm has been given
+eduling problem with decreasing processing times. In this note, we present a 5/4-
+for m ≥ 3 and an algorithm that is the best possible for m = 3,i.e. an algorithm
+（1 + V37）/6.
+© 2012 EIsevier B.V. All rights reserved.
+has since been published. The best heuristic is due to Fleischer
+and Wahl ［3］. They designed an algorithm with a competitive
+re | ratio smaller than 1.9201, when the number of machines tends to
+3 | infinity.
+on | In practice, problems are often not really online or offline
+ve | but somewhere in between. This means that, with respect to
+he | the online problem, some further information about the jobs is
+ily | available. This additional information allows the improvement of
+吖y | the performance of the best solution algorithm with respect to
+m | the online problem. These problems are often vaguely called semi-
+th | online problems. We will investigate the semi-online scheduling
+ne | problem with decreasing processing times （SOSDP），i.e.， we knowthat
+lal | pj≥Pj+i for alli≥1.
+ng | It is well-known that the offline multiprocessor scheduling
+M. | problem is strongly NP-hard by reduction from the 3-partition.
+eir | The most popular heuristic is the Longest Processing Time algorithm
+（LPT for short） proposed by Graham |4）. The LPT algorithm sorts
+sa | jobs in decreasing order of processing times and assigns them
+one at a time in this order to the machine with the smallest
+'st | current load. The LPT algorithm has a worst-case performance ratio
+1g | of 4/3 - 1/（3m）. Obviously, LPT can be used as an algorithm
+is | for SOSDP. Many other approximation algorithms for offline
+nS | multiprocessor scheduling have been developed and analyzed. Let
+us especially mention the paper by Hochbaum and Shmoys ［6］，
+which provides a PTAS for this problem by using a family of dual
+approximation algorithms.
+The problem SOSDP was first studied by Seiden et al. ［7］. They
+show that LPT with a competitive ratio of 7/6 for m = 2 is
+########## PAGE 2 (full) ##########
+94b657fef61d664d39a872a3: D26092001217ZK00
+350 | T.C.E. Cheng et al. / Operations Research Letters 40 （2012） 349-352
+best possible for two machines, and give a lower bound of （1 + | By （1） all jobs of Mz have processing time less than or equal
+37）/6 ~ 1.18046 for m ≥ 3. So far, no algorithm with a better | to 1/2 and by （2） all second jobs of Mz have processing time less
+competitive ratio than LPT has been found for SOSDP. | than or equal to 3/8. Since at least 2（m + m ） jobs （except z） are
+Problem SOSDP on two uniformly related machines is investi- | assigned to the machines of M1, there is at least one machine of M2，
+gated by Epstein and Favrholdt ［1］.They show that LPT has optimal | which has （at most） two jobs immediately before z is processed.
+competitive ratio =（1 + v17） overall, but does not have optimal | But then z can be assigned as a third job to that machine, since
+competitive ratio for every value of the speed ratio between the | the load would not exceed 1/2 + 3/8+ 1/3 = 29/24 < 5/4，
+two machines. They also construct different algorithms of optimal | contradicting that z is a failure job.
+competitive ratio for the intervals where LPT fails. | Case 2.p1 +Pm+1 > 5/4L
+In this note, we present a 5/4-competitive algorithm for m ≥ 3 | If there is a machine in the optimal solution, which contains
+and a best possible algorithm for m = 3, i.e. an algorithm with | only one job, denoted by x, we can exchange x with pi, so that p1
+a competitive ratio （1 + v37）/6. Both algorithms are elementary | is alone on a machine without that the makespan of the optimal
+and have linear running time. Essentially, they assign, if possible， | solution is increasing. Create a new instance by removing one
+a job to a machine for which the load will not exceed some lower | machine and all jobs except z, which are together with pi on M, in
+bound multiplied by the competitive ratio; otherwise they assign | the heuristic solution. The makespan of the optimal solution of the
+thejob to the machine with the smallest load. | new instance will notincrease.Because p1+pm+1 > 5/4L,jobpm+1
+is not assigned to Mi. Thus, L will not change in the new instance
+2. A 5/4-competitive algorithm for an arbitrary number of | and all jobs except z are assigned to the same machines as in the
+machines | original instance. Only z is assigned to a different machine （ifit was
+processed on M, before）.In any case, the makespan will remain the
+In this section we will present an algorithm, denoted by A, for | same or it will possibly increase in the case that z was assigned to
+SOSDP with a competitive ratio 5/4.Since the LPT algorithm has a | Mi. Since our counterexample is minimal, we get mt = 0.From
+performance ratio 4/3 - 1/（3m）， it outperforms algorithm A only | 2 > 1/4, we conclude x1 = 0.
+for m ≤ 3. The algorithm can be described as follows： | We distinguish two subcases：
+（2a） 5/4L≥1
+Algorithm A. 1.Assign job pj to machine Mj,J= 1，••.，m. | Let M* denote the machine where pi is processed in the optimal
+2. Set L ：= Pm + Pm+i. | solution. From pi + Pm+1 > 5/4L ≥ 1 follows that p1 > 1/2,and
+3. Assign the currentjob pj.j≥ m+ 1,to the machine M with the | we have Mi E .Mz.Thus, there is a largest job pe with pi +pe ≤ 1.
+largest load e（M） such that e（M） + pj≤.Otherwise, assign | W.l.o.g. Pe E Mr and Mr consists of the twojobs pi and pe.
+it to the machine with the smallest load. | From pi + Pm+1 > 1we get t > m + 1and with 5/4L≥ 1
+Theorem 1. Algorithm A is a deterministic algorithm for SOSDP with | follows that there is ajob pe,l ≥ e' > m+ 1, which is assigned
+competitive ratio 5/4. | by Algorithm A to machine Mi such that pi + pe ≤ 5/4L. Get a
+new instance by removing jobs of Mi,i.e. pi, pe plus possibly a
+Proof. W.l.o.g. assume that C* = 1. The proof is established by | third job, and one machine. Similarly as above, L will not change
+contradiction. Then there is a counterexample with a failure job z | and Algorithm A will not improve. Consider the optimal solution
+that shall be the first job being assigned by A to a machine M such | for m machines. Remove machine M* and replace pe/ by pe in the
+that &（M） > 5/4. Moreover, we assume that the counterexample | original optimal assignment. Since pe ≥ pe,the makespan of this
+is minimal, i.e.， there is no counterexample with a smaller number | solution for the new instance is not larger than for the makespan
+ofjobs.Consequently, z is the lastjob,i.e.z = pn. | of the optimal solution for the original instance. Again this yields a
+The jobs are divided into several classes according to their | contradiction to the minimality of our counterexample.
+processing times: Let X， ：= ｛pj I pj > 3/4｝，X2 ：= ｛pj | 3/4 ≥ | （2b） 5/4L<1
+pj > 1/2｝，Xs：= ｛pj | 1/2≥pj>1/4｝ and X4 ：== ｛pj lpj < 1/4｝. | Denote by A the assignment ofjobs to machines in the heuristic
+Denote by x; the cardinality of set X, i = 1， •..，4.Since the failure | solution immediately before the failure job z is assigned. Let m1,m2，
+job z is assigned to the machine M with the smallest load, z has | ms denote the corresponding number of machines with one, two
+processing time greater than 1/4 and x4 = 0. Moreover, at most 3 | or at least three jobs in A.
+jobs are assigned to each machine in the optimal solution. | Ifthere is a machine M in A with only one job,we have l（M） +
+Let .M .oM and denote the machines in the optimal | z ≤ 3/4+1/3 <5/4.Thus, every machine contains at least 2jobs
+solution with one, two and three jobs, respectively. The numbers | before z arrives, i.e.m1 = 0.
+m*，my,mt shall denote the corresponding cardinalities. | Assume there is a machine in A with exactly 2 jobs y1, y2 such
+In the case that at most two jobs are assigned to each machine
+in the optimal solution, we have C* ≥ maxj=1..m｛pj + p2m-j+1｝. | that yi ≥ yz and yi E Xs. We get with yz ≤ pm+1 ≤ L/2 that
+It is obvious that in this case Algorithm A is 5/4-competitive. Thus， | yi+y+Z≤ 1/2+L/2+1/3 ≤5/4.Hence,yi E Xz and mz ≤ X2，
+m> Oand z ≤ 1/3 hold. | which implies with m = mz + ms that
+Let no denote the number of jobs greater than .Then， | n= 2mz +3mg +1= 3m -m2+1≥ 3m-X2+1.
+M1/2 ≤m%+my. | （1） | On the other side, every job of Xz is assigned in the optimal solution
+Because each job is greater than 1/4, the second job on each of the | to a unique machine, together with at most one other job.Hence，
+machines in is smaller than 3/8. Then， | n ≤ 2X2 + 3（m -x2）， which is equivalent to n ≤ 3m - X2. We get
+a contradiction to the above inequality. | 口
+13/8 ≤m+2mg+m=m+mt. | （2）
+We will distinguish two cases | 3. A best possible algorithm for three machines
+Case 1.p1 + pm+1 ≤5/4L：
+Set M1 == ｛Mi.••， Mng+nghand.M2 ：= （Mmt +mg+1.••，Mmn｝. | In this section we will present an algorithm for SOSDP for three
+Due to Pi + pm+1 ≤ 5/4L Algorithm A assigns the mz jobs | machines with a competitive ratio c ：= （1 + v37）/6.According
+Pm+1.••.，Pmtmg to machines in M1. | to the lower bound given in ［7］， this algorithm is best possible
+========== PAGE 2 COL L ==========
+350 | T.C.E. Cheng et al. / Operations Researc.
+best possible for two machines, and give a lower bound of （1 +
+37）/6 ~ 1.18046 for m ≥ 3. So far, no algorithm with a better | tC
+competitive ratio than LPT has been found for SOSDP.
+Problem SOSDP on two uniformly related machines is investi-
+gated by Epstein and Favrholdt ［1］. They show that LPT has optimal
+competitive ratio （1 + v17） overall, but does not have optimal | Bi
+competitive ratio for every value of the speed ratio between the | th
+two machines. They also construct different algorithms of optimal | c（
+competitive ratio for the intervals where LPT fails.
+In this note, we present a 5/4-competitive algorithm for m ≥ 3
+and a best possible algorithm for m = 3, i.e. an algorithm with
+a competitive ratio （1 + v37）/6. Both algorithms are elementary | is
+and have linear running time. Essentially, they assign, if possible， | S（
+a job to a machine for which the load will not exceed some lower
+bound multiplied by the competitive ratio; otherwise they assign
+the job to the machine with the smallest load.
+is
+2. A 5/4-competitive algorithm for an arbitrary number of | al
+machines | 01
+P
+In this section we will present an algorithm, denoted by A, for | Sa
+SOSDP with a competitive ratio 5/4.Since the LPT algorithm has a | M
+performance ratio 4/3- 1/（3m）， it outperforms algorithm A only
+for m ≤ 3. The algorithm can be described as follows：
+Algorithm A. 1. Assign job p; to machine Mj,j= 1，...，m.
+2. Set L ：= Pm + Pm+i. | SG
+3. Assign the currentjob pj.j≥ m+ 1,to the machine M with the
+largest load e（M） such that e（M） + pi ≤.Otherwise, assign | M
+it to the machine with the smallest load.
+fc
+Theorem 1. Algorithm A is a deterministic algorithm for SOSDP with | b
+competitive ratio 5/4.
+Proof. W.l.o.g. assume that C* = 1. The proof is established by | t
+contradiction. Then there is a counterexample with a failure job z
+that shall be the first job being assigned by A to a machine M such | fo
+that &（M） > 5/4. Moreover, we assume that the counterexample | 01
+is minimal, i.e.， there is no counterexample with a smaller number | S（
+ofjobs.Consequently, z is the lastjob,i.e.z = pn.
+The jobs are divided into several classes according to their | C（
+processing times: Let X， ：= ｛pj I pj > 3/4｝，X2：= ｛pj | 3/4 ≥
+pj >1/2｝，Xs ：= ｛pjl 1/2≥pj> 1/4｝ and X4 == ｛pj lpj < 1/4｝.
+Denote by x; the cardinality of set X, i = 1， •..，4.Since the failure | S（
+job z is assigned to the machine M with the smallest load, z has
+processing time greater than 1/4 and x4 = 0. Moreover, at most 3 | 01
+jobs are assigned to each machine in the optimal solution.
+Let.M ： M andu denote the machines in the optimal
+solution with one, two and three jobs, respectively. The numbers
+mt,mz,ms shall denote the corresponding cardinalities.
+In the case that at most two jobs are assigned to each machine
+in the optimal solution, we have C* ≥ max=1..m｛pj + p2m-j+1｝. | y
+Itis obvious that in this case Algorithm A is5/4-competitive.Thus，
+m > Oand z ≤ 1/3 hold.
+Let no denote the number ofjobs greater than .Then，
+N1/2≤m+m. | （1）
+Because each job is greater than 1/4, the second job on each of the | tC
+machines in is smaller than 3/8. Then，
+13/8 ≤m+2mg+m=m+mu. | （2）
+We will distinguish two cases | 3.
+Case 1.p1 + pm+1 ≤5/4L：
+Set .M1 = ｛Mi.••，Mng +mg ） and .M2 ：= （Mng +mg+.••， Mmnb.
+Due to Pi + pm+l ≤ 5/4L Algorithm A assigns the mz jobs
+Pm+1.••，Pmtmg to machines in M1. | tC
+========== PAGE 2 COL R ==========
+94b657fef61d664d39a872a3:D26092001217ZK00
+Research Letters 40 （2012） 349-352
+By （1） all jobs of Mz have processing time less than or equal
+to 1/2 and by （2 all second jobs of Mz have processing time less
+than or equal to 3/8. Since at least 2（m + m ） jobs （except z） are
+assigned to the machines of M1, there is at least one machine of M2，
+which has （at most） two jobs immediately before z is processed.
+But then z can be assigned as a third job to that machine, since
+the load would not exceed 1/2 + 3/8 + 1/3 = 29/24 < 5/4，
+contradicting that z is a failure job.
+Case 2.p1 +Pm+1 >5/4L
+If there is a machine in the optimal solution, which contains
+only one job, denoted by x, we can exchange x with pi, so that p1
+is alone on a machine without that the makespan of the optimal
+solution is increasing. Create a new instance by removing one
+machine and all jobs except z, which are together with pi on Mi in
+the heuristic solution. The makespan of the optimal solution of the
+new instance will notincrease.Because p1+pm+1 > 5/4L,jobpm+1
+is not assigned to Mi. Thus, L will not change in the new instance
+and all jobs except z are assigned to the same machines as in the
+original instance. Only z is assigned to a different machine （ifit was
+processed on M, before）.In any case, the makespan willremain the
+same or it will possibly increase in the case that z was assigned to
+Mi. Since our counterexample is minimal, we get m* = 0.From
+2> 1/4, we conclude x1 = 0.
+We distinguish two subcases：
+（2a） 5/4L≥ 1
+Let M denote the machine where pi is processed in the optimal
+solution. From p1 + Pm+1 > 5/4L ≥ 1 follows that p1 > 1/2,and
+we have Mi E .Mz.Thus, there is a largest job pe with pi +pe ≤ 1.
+W.l.o.g. Pe E Mr and Mr consists of the twojobs pi and pe.
+From pi + Pm+1 > 1we get t > m+ 1and with 5/4L ≥ 1
+follows that there is ajob pe,e ≥ e' > m + 1, which is assigned
+by Algorithm A to machine Mi such that pi + pe ≤ 5/4L. Get a
+new instance by removing jobs of Mi,i.e. pi, pe plus possibly a
+third job, and one machine. Similarly as above, L will not change
+and Algorithm A will not improve. Consider the optimal solution
+for m machines. Remove machine M* and replace pe/ by pe in the
+original optimal assignment. Since pe ≥ pe,the makespan of this
+solution for the new instance is not larger than for the makespan
+of the optimal solution for the original instance. Again this yields a
+contradiction to the minimality of our counterexample.
+（2b） 5/4L≤1
+Denote by the assignment ofjobs to machines in the heuristic
+solution immediately before the failure job z is assigned. Let m1, m2，
+ms denote the corresponding number of machines with one, two
+Or at least three jobs in A.
+Ifthere is a machine M in o with only one job,we have &（M） +
+Z ≤ 3/4+1/3 <5/4.Thus, every machine contains at least 2jobs
+before z arrives, i.e. m］ = 0.
+Assume there is a machine in A with exactly 2 jobs y1, y2 such
+that yi ≥ yz and yi E Xs. We get with yz ≤ pm+1 ≤ L/2 that
+Vi+Y+2≤ 1/2+L/2+1/3 ≤5/4. Hence,yi E Xzand mz ≤ Xz，
+which implies with m = mz + ms that
+n= 2mz +3mg +1= 3m -m2+1≥3m-X2+1.
+On the other side, everyjob of Xz is assigned in the optimal solution
+to a unique machine, together with at most one other job.Hence，
+n ≤ 2X2 + 3（m -x2），which is equivalent to n ≤ 3m - X2. We get
+a contradiction to the above inequality. | 囗
+3. A best possible algorithm for three machines
+In this section we will present an algorithm for SOSDP for three
+machines with a competitive ratio c：= （1 + v37）/6.According
+to the lower bound given in ［7］， this algorithm is best possible
+########## PAGE 3 (full) ##########
+94b657fef61d664d39a872a3: D26092001217ZK00
+T.C.E. Cheng et al. / Operations Research Letters 40 （2012）349-352 | 351
+in terms of the competitive ratio. Formally, Algorithm A3 can be | p2 + ps + ps ≤ cand ps fits on machine Mz. Since by （04） a
+described as follows： | counterexample contains at most 8jobs, there is no failure job and
+we have proven
+Algorithm A3. 1. Assign jobs p1, P2,Ps to machines M1, Mz, Ms.
+2. Set Lo ：= max｛p1, P3+p4｝.Ifpi +p4 ≤ cLo,assignp4 to Mi and | Observation 06. pi + P4 > CLo, i.e. job p4 is assigned to machine
+Ps to Mz and the remaining jobs to the machine with smallest | Ms-
+Let A = ｛a1, Q2，•..，Qr｝，B = ｛b1,b2....，bs｝ be two sets of
+3. Ifpi + p4 > CLo, assign p4 to Ms. Set L ：= max｛Lo, min｛pz + | nonnegative integers both sorted in decreasing order withr 1 s.
+P5,P3+ P4+PsH｝.IfMi contains onlyjob piand ifpi+Pj ≤ CL， | We say that A dominates Bif al ≥ b1,az ≥b2....，as ≥bs.
+assign the current job pj j ≥ 5, to machine M1. Otherwise， | Assume that M* consists only of job p1. Then, all other jobs
+assign pj to the machine with smallest load. | are processed on machines Mz, Ms in the optimal solution. Since
+P1 E Mi, the jobs processed on machines M2, Ms, denoted by g，
+Theorem 2. There exists a deterministic algorithmfor SOSDPfor m = | are dominated by the jobs on machines Mz, Ms, denoted by g*.
+3 with competitive ratio c = （1 + v37）/6 ~1.18046. | Thus, the optimal solution for an instance with two machines and
+Proof. To distinguish between assignments of Algorithm A3 and | jobs of g is not larger than for an instance with two machines
+optimal assignments we denote the machines of the optimal | and jobs g*， which means it is at most one. For two machines LPT
+assignment by M*， Mz, Ms. We may identify a machine with the | has a worst-case performance of 7/6. Consequently, no subset of
+jobs assigned to that machine. W.l.o.g. p, is assigned to the first | g has a load greater than 7/6 when assigned to two machines by
+machine in an optimal assignment, i.e. p1 € M. W.l.o.g. C* = 1 | LPT. But by （06） no job will be assigned in Step 2 of Algorithm A3
+holds. Therefore, l （M*） ≤ 1 fori = 1,2, 3 and the total processing | and the assignment of jobs to Mz and Ms by A3 is identical to the
+time of the jobs is at most 3. | LPT algorithm. Thus, immediately before z is assigned, there is a
+As in Theorem 1, the proofis established by contradiction.Then | machine M E ｛Mz, Ms｝ with &（M） +z ≤ 7/6. Since z is assigned
+there is a counterexample with a failure job z that shall be the first | to the machine with the smallest load, we get a contradiction to
+job being assigned by A3 to a machine M such that &（M） >c. | the assumption that z is the failure job. Applying （02）we obtain
+W.l.o.g.z is the last job. Note that z is always assigned to a machine
+with the smallest load. | Observation O7. M™ contains at least two jobs and pi ≤ 1-z≤
+It can be easily seen that the bounds Lo, L calculated by A3 are
+lower bounds on the optimal makespan, i.e. Lo ≤ L ≤ 1,and that | Now assume that Lo ≥ c - 1/3. It follows with （01） and （06）
+that A3 yields the claimed bound for an instance with at most 5 | that pi+P4 > cLo ≥ 1.Hence, p1 > 1/2 and machine M* contains
+jobs. Note that the competitive ratio c is the root of a quadratic | exactly 2 jobs. Since cL ≥ cLo > 1,the second job on Mi is at least
+equation. More precisely, we have | as large as the second job on M.Consequently,the jobs processed
+on machines M2, Ms are dominated by the jobs on machines M，
+Observation 01. （C - 1/3）c = 1. | Ms. Equivalently to the proof of （07） we get a contradiction to the
+Because the total load of the machines is at most 3, there is a | existence of a counterexample.
+machine with load less than or equal to 1-z/3 before z is assigned.
+Since z is assigned to the machine with smallest load, we have | Observation O8. Lo < c - 1/3.
+（1-2/3） +2> C,Which results in | Assume that pi + po > c. Thus, M* contains no job of the
+set ｛pz, P3，...，po｝ and there is a machine in the optimal solution，
+Observation O2. z >g（C-1） ~ 0.27069. | which contains at least three jobs of ｛p2, P3， ...，Po｝. This implies
+Po ≤ 1/3. Since by （07）p1 ≤ 0.73, we conclude that
+Consequently, we get
+Observation 09. pi + po ≤c.
+Observation 03. All jobs have a processing time greater than
+N（c - 1）， each machine in the optimal solution has at most 3 jobs | For the main part of the proof we distinguish two cases：
+and the counterexample contains n ≤ 9jobs. | Case 1.p2 ≥p3 +p4
+Assume that n = 9. After assigning 8 jobs, there is a machine | Since pi ≥ p2 ≥ p3 + p4 > 0.54 by （02）， machines M* and Mu
+contain at most 2 jobs and we have by （04） that n ≤ 7.
+with at most two jobs and load not exceeding p1 + p4. Thus, the | By the definition of L, ps + P4 + P5 ≤L ≤ 1.Thus, if one the
+makespan obtained by A3 is at most pi + p4 + p9. Each machine | jobs ps, Po, p is assigned by A3 to machine Ms, the load of Ms is no
+of the optimal solution contains exactly 3 jobs. Thus, two jobs of | larger than c.From （09） we know that pz+po ≤ cand if ps or po is
+｛p1, p2,p3,pa｝ are on one machine and we get ps + p4 + pg ≤ | assigned by A3 to machine Mz the load of Mz is also no larger than
+1 and hence p4 + pg ≤ 2/3.Obviously, p1 + ps + pg ≤ 1， | C. Finally, by （07） machine M* contains at least two jobs, which
+which gives with （02） that pi ≤ 1- 2z ~ 0.45862. Therefore， | means pi +p ≤ 1.Thus, p can be assigned to machine M, by A3
+P1+P4+p9 ≤ 1-2z+2/3 < c,which contradicts the assumption | without exceeding c. Since A3 always assigns jobs to the machine
+of a counterexample. Recall that A3 yields the claimed bound for at | with smallest load or to a machine for which the total load does
+most 5 jobs. Thus,we have shown | not exceed c, none of the jobs p1， ...，p can be a failure job.
+Observation 04. The counterexample contains 6, 7 or 8 jobs. | Case 2.p2 <P3 +P4
+Elementary calculations using （03） and the fact that the load of | Since by （06）p1 + p4 > cLo,job p4 is assigned to machine Ms
+and we get that L = max｛p1, p2 + ps,P3 +p4｝ ≤ 1.
+each machine in the optimal solution is at most one, deliver the | We distinguish several subcases depending on the locations of
+following bounds summarized in
+Assume Ps is assigned to Mi. Thus, because of pz < p3 + p4，
+Observation 05. If n ≥ 7, then ps ≤ 1/2,p ≤ 1/3 and po +p | job po must be processed on Mz. By （09） po is not the failure job.
+≤ 2/3. | By （05） p7 ≤ 1/3 and p can be assigned to machine Ms since
+Ifn = 8, then pz ≤ 1/2 and ps + ps ≤ 2/3. | ps + pa +p ≤ Lo + 1/3 < cby （08）.Job ps can be assigned to
+Assume that pi + p4 ≤ cLo. In this case P4 E M1. Moreover, ps | machine Mz since due to （05）p2+ps+P8 ≤ 1/2+2/3= 7/6 <c.
+can be assigned to Mz and po to Ms, respectively. We get from （05） | Since p2 < ps + p4,it remains to consider that ps is assigned to
+that ps + po +p ≤ 7/6 <cand p fits on machine Ms.If n = 8， | Mz. If po is assigned to Mi we proceed as above with p and ps.
+========== PAGE 3 COL L ==========
+T.C.E. Cheng et al. / Operations Rese
+in terms of the competitive ratio. Formally, Algorithm A3 can be
+described as follows：
+Algorithm A3. 1. Assign jobs p1, P2,Ps to machines M1, Mz, Ms.
+2. Set Lo ：= max｛p1, ps +p4｝.Ifp1+p4 ≤ cLo,assign p4 to Mi and
+ps to Mz and the remaining jobs to the machine with smallest
+load.
+3. If pi + p4 > CLo, assign p4 to Ms. Set L ：= max｛Lo, min｛pz +
+P5,P3 +P4+Ps｝｝.IfM, contains only job pi and if p +pj ≤ cL，
+assign the current job pj, j ≥ 5, to machine Mj. Otherwise，
+assign pj to the machine with smallest load.
+Theorem 2. There exists a deterministic algorithmfor SOSDPfor m =
+3 with competitive ratio c = （1 + v37）/6 ~1.18046.
+Proof. To distinguish between assignments of Algorithm A3 and
+optimal assignments we denote the machines of the optimal
+assignment by M, Mz, Ms.We may identify a machine with the
+jobs assigned to that machine. W.l.o.g. p, is assigned to the first
+machine in an optimal assignment, i.e. p1 € M*.W.1.o.g. C* = 1
+holds. Therefore, l （M*） ≤ 1 fori = 1, 2, 3 and the total processing
+time of the jobs is at most 3.
+As in Theorem 1, the proof is established by contradiction.Then
+there is a counterexample with a failure job z that shall be the first
+job being assigned by A3 to a machine M such that &（M） >c.
+W.l.o.g.z is the last job. Note that z is always assigned to a machine
+with the smallest load.
+It can be easily seen that the bounds Lo, L calculated by A3 are
+lower bounds on the optimal makespan, i.e. Lo ≤ L ≤ 1, and that
+that A3 yields the claimed bound for an instance with at most 5
+jobs. Note that the competitive ratio c is the root of a quadratic
+equation. More precisely, we have
+Observation O1. （C - 1/3）C=1.
+Because the total load of the machines is at most 3, there is a
+machine with load less than or equal to 1-z/3 before z is assigned.
+Since z is assigned to the machine with smallest load, we have
+（1-2/3） +2> C,which results in
+Observation O2. z >g （C-1） ~ 0.27069.
+Consequently,we get
+Observation 03. All jobs have a processing time greater than
+N（c - 1）， each machine in the optimal solution has at most 3 jobs
+and the counterexample contains n ≤ 9jobs.
+Assume that n = 9. After assigning 8 jobs, there is a machine
+with at most two jobs and load not exceeding p1 + p4. Thus, the
+makespan obtained by A3 is at most p1 + p4 + p9. Each machine
+of the optimal solution contains exactly 3 jobs.Thus, two jobs of
+｛p1, p2,p3,pa｝ are on one machine and we get ps + p4 + pg ≤
+1 and hence p4 + pg ≤ 2/3.Obviously,pi + pa + pg ≤ 1，
+which gives with （02） that p1 ≤ 1- 2z ~ 0.45862. Therefore，
+P1+P4+Pg ≤ 1-2z+2/3 < c,which contradicts the assumption
+of a counterexample.Recall that A3 yields the claimed bound for at
+most 5 jobs.Thus, we have shown
+Observation 04. The counterexample contains 6,7 or 8jobs.
+Elementary calculations using （03） and the fact that the load of
+each machine in the optimal solution is at most one, deliver the
+following bounds summarized in
+Observation 05. If n ≥ 7, then ps ≤ 1/2,p ≤ 1/3 and po + p
+≤ 2/3.
+Ifn = 8, then pz ≤ 1/2 and ps + ps ≤ 2/3.
+Assume that pi + p4 ≤ cLo. In this case P4 E M1. Moreover, ps
+can be assigned to Mz and po to Ms, respectively. We get from （05）
+that ps + po + p ≤ 7/6 < cand p, fits on machine Ms.If n = 8，
+========== PAGE 3 COL R ==========
+94b657fef61d664d39a872a3:D26092001217ZK00
+ons Research Letters 40 （2012）349-352 | 351
+be | P2 + ps + ps ≤ cand ps fits on machine Mz. Since by （04） a
+counterexample contains at most 8jobs, there is no failurejob and
+we have proven
+1d | Observation O6. p1 +P4 > cLo,i.e, job p4 is assigned to machine
+St
+Let A = ｛a1, Q2，••.，ar｝，B = ｛b1,b2....，bs｝ be two sets of
+nonnegative integers both sorted in decreasing order withr 1 s.
+CL， | We say that A dominates Bif al ≥ b1, az ≥b2...，as ≥bs
+se， | Assume that M* consists only of job p1. Then, all other jobs
+are processed on machines Mz, Ms in the optimal solution. Since
+Pi E Mi, the jobs processed on machines Mz, Ms, denoted by g，
+= | are dominated by the jobs on machines Mz,Mg, denoted by g*.
+Thus, the optimal solution for an instance with two machines and
+jobs of g is not larger than for an instance with two machines
+and jobs g*， which means it is at most one. For two machines LPT
+has a worst-case performance of 7/6. Consequently, no subset of
+g has a load greater than 7/6 when assigned to two machines by
+LPT. But by （06） no job will be assigned in Step 2 of Algorithm A3
+and the assignment of jobs to Mz and Ms by A3 is identical to the
+LPT algorithm. Thus, im mediately before z is assigned, there is a
+machine M = ｛M2, Mg｝ with e（M） +z ≤ 7/6. Since z is assigned
+to the machine with the smallest load, we get a contradiction to
+the assumption that z is the failure job. Applying （02）we obtain
+Observation O7. M contains at least two jobs and pi ≤ 1-z≤
+re | 0.73.
+lat | Now assume that Lo ≥ c - 1/3. It follows with （01） and （06）
+：5 | that p1+P4 > cLo ≥ 1.Hence,p1 > 1/2 and machine M* contains
+tic | exactly 2 jobs. Since cL ≥ cLo > 1,the second job on Mi is at least
+as large as the second job on M.Consequently,the jobs processed
+on machines Mz, Ms are dominated by the jobs on machines M .
+Ms. Equivalently to the proof of （07）we get a contradiction to the
+existence of a counterexample.
+ed
+ve | Observation O8. Lo < c - 1/3.
+Assume that pi + po > c. Thus, M* contains no job of the
+set ｛pz, p3，•..，Po｝ and there is a machine in the optimal solution，
+which contains at least three jobs of ｛p2, P3， ...，Po｝. This implies
+Po ≤ 1/3. Since by （07）p1 ≤ 0.73, we conclude that
+Observation 09. pi + po ≤c.
+an
+bs | For the main part of the proof we distinguish two cases：
+Case 1.p2 ≥p3 +p4
+Since Pi ≥ P2 ≥ p3 + p4 > 0.54 by （02）， machines M* and Mu
+ne | contain at most 2 jobs and we have by （04） that n ≤ 7.
+he | By the definition of L, ps + P4 + P5 ≤L ≤ 1.Thus, if one the
+ne | jobs ps,Po, P is assigned by A3 to machine Ms, the load of Ms is no
+of | larger than c. From （09）we know that pz+Po ≤cand ifps or Po is
+I | assigned by A3 to machine Mz the load of Mz is also no larger than
+1， | c. Finally, by （07） machine M* contains at least two jobs, which
+re， | means pi +p ≤ 1.Thus, p can be assigned to machine M, by A3
+on | without exceeding c. Since A3 always assigns jobs to the machine
+at | with smallest load or to a machine for which the total load does
+not exceed c, none of the jobs p1， ...，p can be a failure job.
+Case 2.p2 <P3+P4
+Since by （06）p1 + P4 > cLo,job p4 is assigned to machine Ms
+and we get that L = max｛p1,p2 + ps,P3+p4｝ ≤ 1.
+We distinguish several subcases depending on the locations of
+Ps and po.
+Assume ps is assigned to Mi. Thus, because of pz < p3 + p4，
+P7 | job po must be processed on Mz. By （09） po is not the failure job.
+By （05） p7 ≤ 1/3 and p can be assigned to machine Ms since
+ps + pa +p ≤ Lo + 1/3 <cby （08）.Job ps can be assigned to
+P5 | machine Mz since due to （05）p2+ps+P8 ≤ 1/2+2/3= 7/6 <c.
+5） | Since p2 < p3 + p4,it remains to consider that ps is assigned to
+8， | Mz. If po is assigned to M, we proceed as above with p and ps.
+########## PAGE 4 (full) ##########
+94b657fef61d664d39a872a3: D26092001217ZK00
+352 | T.C.E. Cheng et al. / Operations Research Letters 40 （2012）349-352
+Ifpo is assigned to Ms, then Ms is the machine with smallest load Acknowledgments
+after fivejobs and we get from （09）thatp3+P4+P6 ≤ Pi+Po ≤C.
+This implies pi + p ≤ cand p can be assigned to Mi.Finally, p8 | This research was partially supported by The Hong Kong
+can be assigned to Mz since p2 + ps + ps ≤ 1/2+2/3= 7/6 | Polytechnic University under grant number G-T397. The authors
+by （05）. | are thankful to an anonymous referee for his comments, which
+If po is assigned to Mz, as machine with smallest load, we get | gqreatly improved the presentation of the paper.
+analogously Pz + Ps +Po ≤ Pi+Po ≤candpi+P ≤ c.Recall
+thatps+P4 ≤ Lo and ps ≤ 1/3 by（05）.Thus,job ps can be assigned | References
+to Ms since due to （08）p3+P4+P8 ≤ Lo+ 1/3 ≤C.This completes
+the proof of our theorem. | 口 | ［1］ L. Epstein, L.M. Favrholdt, Optimal non-preemptive semi-online scheduling on
+two related machines, Journal of Algorithms 57 （2005） 49-73.
+［2］ U. Faigle, W. Kern, G. Turan, On the performance of on-line algorithms for
+4. Conclusions | （B） R FeRChe:KE Wah Ca hoe sare dulng Rensted. joumal of scheduling 3
+In this note we have presented a simple algorithm for problem | ［4］ R.L. Graham, Bounds on multiprocessing timing anomalies, SIAM Journal on
+SOSDP with a competitive ratio better than LPT and a best possible | Applied Mathematics 17 （1969） 263-269.
+algorithm for SoSDP with three machines. For general m there | ［5］ R.L. Graham, Bounds for certain multiprocessor anomalies, Bell System
+is still a significant gap between 5/4 and the lower bound（1 + | TechnicalJournal 45 （1966） 1563-1581.
+［6］ D.S. Hochbaum, D. Shmoys, Using dual approximation algorithms for schedul-
+v37）/6.It is an interesting open question whether there are better | ing problems: theoretical and practical results, Journal of the Association for
+lower bounds than （1 + v37）/6, or whether for more than three | Computing Machinery 34 （1987） 144-162.
+machines, algorithms with competitive ratio （1 + v37）/6 exist. | ［7］ S. Seiden, J.Sgall, G. Woeginger, Semi-online scheduling with decreasing job
+sizes, Operations Research Letters 27 （2000）215-222.
+========== PAGE 4 COL L ==========
+352 | T.C.E. Cheng et al. / Operations Researc.
+Ifpo is assigned to Ms, then Ms is the machine with smallestload | A
+after fivejobs and we get from （09）that p3+P4+P6 ≤ P1+Po ≤c.
+This implies pi + p ≤ cand p can be assigned to Mi. Finally, P8
+can be assigned to Mz since p2 + ps + ps ≤ 1/2+2/3= 7/6 | P
+by （05）. | al
+If po is assigned to M2, as machine with smallest load, we get | g
+analogously P2 + Ps +P ≤ Pi+Po ≤candpi+P ≤c.Recall
+that ps+p4 ≤ Lo and p8 ≤ 1/3 by （05）.Thus,job ps can be assigned
+to Ms since due to （08）p3+P4+P8 ≤ Lo+ 1/3 ≤ C.This completes
+the proof of our theorem.
+［2
+4. Conclusions
+［3
+In this note we have presented a simple algorithm for problem | 4
+SOSDP with a competitive ratio better than LPT and a best possible
+algorithm for SOSDP with three machines. For general m there
+is still a significant gap between 5/4 and the lower bound （1 + | 16
+v37）/6.It is an interesting open question whether there are better
+lower bounds than （1 + v37）/6, or whether for more than three | ［7
+machines, algorithms with competitive ratio （1 + 37）/6 exist.
+========== PAGE 4 COL R ==========
+94b657fef61d664d39a872a3:D26092001217ZK00
+Research Letters 40 （2012） 349-352
+Acknowledgments
+This research was partially supported by The Hong Kong
+Polytechnic University under grant number G-T397.The authors
+are thankful to an anonymous referee for his comments, which
+greatly improved the presentation of the paper.
+References
+［1］ L. Epstein, L.M. Favrholdt, Optimal non-preemptive semi-online scheduling on
+two related machines, Journal of Algorithms 57 （2005） 49-73.
+［21 U. Faigle, w. Kern, G. Turan, On the performance of on-line algorithms for
+（2000） 343-353.
+14］ R.L. Graham, Bounds on multiprocessing timing anomalies, SIAM Journal on
+Applied Mathematics 17 （1969） 263-269.
+［5］ R.L. Graham, Bounds for certain multiprocessor anomalies, Bell System
+Technical Journal 45 （1966） 1563-1581.
+［6］ D.S. Hochbaum, D. Shmoys, Using dual approximation algorithms for schedul-
+ing problems: theoretical and practical results, Journal of the Association for
+Computing Machinery 34 （1987） 144-162.
+［7］ S. Seiden, J.Sgall, G. Woeginger, Semi-online scheduling with decreasing job
+sizes, Operations Research Letters 27 （2000） 215-222.
