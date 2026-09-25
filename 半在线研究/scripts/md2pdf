@@ -1,0 +1,45 @@
+#!/bin/bash
+# md2pdf — 把 Markdown（含中文 / LaTeX 数学 / 表格 / 符号）一键转成 PDF
+#
+# 依赖（本机已装，脚本自动把 MacTeX 加进 PATH）：
+#   - pandoc    （~/.local/bin/pandoc；官方 3.11 二进制。注：macOS 14 无 Homebrew 预编译包，
+#                曾被迫源码编译——故改用官方包，见 ~/.local/opt/pandoc-3.11/）
+#   - MacTeX    （/Library/TeX/texbin 下的 xelatex 等）
+#
+# 用法：
+#   scripts/md2pdf 某文档.md            → 在同目录生成 某文档.pdf
+#   scripts/md2pdf 某文档.md 输出.pdf   → 指定输出路径
+#   相对/绝对路径均可；从任意目录调用均可。
+#
+# 两个已踩过的坑（脚本已内置规避）：
+#   1) 文中单独的 `---`（横线）会被 pandoc 当 YAML 元数据块（它允许 YAML 出现在任意空行后）
+#      → 输入格式关掉 yaml_metadata_block。
+#   2) U+2032/U+2033（′ ″）在 LaTeX 文本模式与 fontspec 的数学激活定义冲突，会报 Missing $
+#      → 预处理统一换成 ASCII '（渲染等价；$G'$ 在数学模式也是正确质数）。
+#
+# 字体约定（全部 macOS 系统自带，无需额外安装）：
+#   中文 CJKmainfont = PingFang SC ｜ 正文 mainfont = Seravek
+#   数学符号 → Apple Symbols ｜ ✓✗ 等饰符号 → Arial Unicode MS（见 pandoc-header.tex）
+# 缺字符警告时：先查码位 `fc-list ":charset=<十六进制>" family`，再往 pandoc-header.tex 加路由。
+set -euo pipefail
+export PATH="/Library/TeX/texbin:$PATH"
+
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+in="${1:?用法: md2pdf <输入.md> [输出.pdf]}"
+out="${2:-${in%.md}.pdf}"
+
+tmp_in="$(mktemp /tmp/md2pdf_XXXX.md)"
+trap 'rm -f "$tmp_in"' EXIT
+perl -CSD -pe 's/\x{2033}/\x27\x27/g; s/\x{2032}/\x27/g; s/\x{2099}/\$_{n}\$/g' "$in" > "$tmp_in"
+
+pandoc "$tmp_in" -o "$out" \
+  -f markdown-yaml_metadata_block \
+  --pdf-engine=xelatex \
+  -H "$HERE/pandoc-header.tex" \
+  -V CJKmainfont="PingFang SC" \
+  -V mainfont="Seravek" \
+  -V geometry:margin=2.2cm \
+  -V fontsize=11pt
+
+echo "✔ 已生成: $out"

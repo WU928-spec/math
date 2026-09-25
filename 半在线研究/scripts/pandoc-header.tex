@@ -1,0 +1,27 @@
+% pandoc-header.tex — md2pdf 的 LaTeX 头（pandoc -H 传入）
+% 作用：把 Markdown 文本模式里的 Unicode 符号路由到覆盖它们的 macOS 系统字体，
+%       避免 xelatex 报 "Missing character"。
+% 维护：遇到新的缺字符警告时，按字符查 `fc-list ":charset=<码位十六进制>" family`，
+%       挑一个覆盖它的字体，照下面格式加一行 \newunicodechar 即可。
+\usepackage{newunicodechar}
+\newfontfamily\symfont[Scale=MatchLowercase]{Apple Symbols}
+\newfontfamily\dingfont[Scale=MatchLowercase]{Arial Unicode MS}
+\newunicodechar{✓}{{\dingfont ✓}}\newunicodechar{✗}{{\dingfont ✗}}
+\newunicodechar{⚠}{{\symfont ⚠}}\newunicodechar{⟹}{{\symfont ⟹}}
+\newunicodechar{⟺}{{\symfont ⟺}}\newunicodechar{∎}{{\symfont ∎}}
+\newunicodechar{∈}{{\symfont ∈}}\newunicodechar{⁻}{{\symfont ⁻}}
+\newunicodechar{≥}{{\symfont ≥}}\newunicodechar{≤}{{\symfont ≤}}
+\newunicodechar{≈}{{\symfont ≈}}\newunicodechar{×}{{\symfont ×}}
+\newunicodechar{≠}{{\symfont ≠}}\newunicodechar{→}{{\symfont →}}
+\newunicodechar{←}{{\symfont ←}}\newunicodechar{⊆}{{\symfont ⊆}}
+\newunicodechar{∀}{{\symfont ∀}}\newunicodechar{∃}{{\symfont ∃}}
+\newunicodechar{′}{{\dingfont\char"2032 }}\newunicodechar{≫}{{\dingfont ≫}}
+\newunicodechar{≷}{{\dingfont ≷}}\newunicodechar{⊂}{{\dingfont ⊂}}
+\newunicodechar{⌈}{{\symfont ⌈}}\newunicodechar{⌉}{{\symfont ⌉}}
+\newunicodechar{∪}{{\symfont ∪}}\newunicodechar{∖}{{\symfont ∖}}
+\newunicodechar{★}{{\symfont ★}}\newunicodechar{∧}{{\symfont ∧}}
+\newunicodechar{∨}{{\symfont ∨}}\newunicodechar{∴}{{\symfont ∴}}
+\newunicodechar{⇒}{{\symfont ⇒}}\newunicodechar{↔}{{\symfont ↔}}
+\newunicodechar{①}{{\dingfont ①}}\newunicodechar{②}{{\dingfont ②}}
+\newunicodechar{③}{{\dingfont ③}}
+\newunicodechar{️}{}
