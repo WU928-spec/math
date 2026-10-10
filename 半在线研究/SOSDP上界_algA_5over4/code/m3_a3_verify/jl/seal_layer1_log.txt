@@ -1,0 +1,69 @@
+片总数 1050；命中目标形状（z 兜底 + 计数 [2, 2, 2, 1]）：328
+  …50/328  已用 72.3 s，均 1.446 s/片，当前最大 1.135345
+  …100/328  已用 127.7 s，均 1.277 s/片，当前最大 1.18046
+  …150/328  已用 194.2 s，均 1.295 s/片，当前最大 1.18046
+  …200/328  已用 273.0 s，均 1.365 s/片，当前最大 1.18046
+  …250/328  已用 335.1 s，均 1.34 s/片，当前最大 1.18046
+
+[70653] signal 15: Terminated: 15
+in expression starting at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/a4_seal_layers.jl:64
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+_ZNSt3__16vectorIcNS_9allocatorIcEEE6assignEmRKc at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN11HVectorBaseIdE5setupEi at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN8HEkkDual18initialiseInstanceEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN8HEkkDualC2ER4HEkk at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN4HEkk5solveEb at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_Z14solveLpSimplexR19HighsLpSolverObject at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZZ7solveLpR19HighsLpSolverObjectNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEENK3$_0clEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_Z7solveLpR19HighsLpSolverObjectNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZZN5Highs19calledOptimizeModelEvENK3$_0clER7HighsLpRKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEERd at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN5Highs19calledOptimizeModelEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN17HighsLpRelaxation3runEb at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN17HighsLpRelaxation9resolveLpEP11HighsDomain at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN11HighsSearch12evaluateNodeEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN11HighsSearch4diveEx at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZZZN14HighsMipSolver3runEvENK4$_22clERKNSt3__16vectorIiNS1_9allocatorIiEEEERNS2_IZNS_3runEvE11RestartVoteNS3_IS8_EEEEbiidENKUliE_clEi at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN14HighsMipSolver3runEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN5Highs12callSolveMipEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN5Highs19calledOptimizeModelEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN5Highs13optimizeModelEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+_ZN5Highs3runEv at /Users/a123456/.julia/artifacts/5a3d28a9c8ef24dab596551d0b991b2f9d029ee7/lib/libhighs.1.15.dylib (unknown line)
+Highs_run at /Users/a123456/.julia/packages/HiGHS/FDUra/src/gen/libhighs.jl:344 [inlined]
+_gc_safe_Highs_run at /Users/a123456/.julia/packages/HiGHS/FDUra/src/MOI_wrapper.jl:2279
+_Highs_run_workaround_issue_316 at /Users/a123456/.julia/packages/HiGHS/FDUra/src/MOI_wrapper.jl:2303 [inlined]
+#44 at /Users/a123456/.julia/packages/HiGHS/FDUra/src/MOI_wrapper.jl:2341 [inlined]
+disable_sigint at ./c.jl:167
+optimize! at /Users/a123456/.julia/packages/HiGHS/FDUra/src/MOI_wrapper.jl:2341
+optimize! at /Users/a123456/.julia/packages/MathOptInterface/lY2WB/src/Bridges/bridge_optimizer.jl:367 [inlined]
+optimize! at /Users/a123456/.julia/packages/MathOptInterface/lY2WB/src/MathOptInterface.jl:122 [inlined]
+optimize! at /Users/a123456/.julia/packages/MathOptInterface/lY2WB/src/Utilities/cachingoptimizer.jl:370
+unknown function (ip: 0x123b8c353) at (unknown file)
+#optimize!#96 at /Users/a123456/.julia/packages/JuMP/fQTIY/src/optimizer_interface.jl:633
+optimize! at /Users/a123456/.julia/packages/JuMP/fQTIY/src/optimizer_interface.jl:569 [inlined]
+#milp_sel#59 at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/a4_milp10.jl:134
+milp_sel at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/a4_milp10.jl:118 [inlined]
+main at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/a4_seal_layers.jl:41
+unknown function (ip: 0x12389d43b) at (unknown file)
+jl_apply at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/julia.h:2318 [inlined]
+do_call at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:123
+eval_stmt_value at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:194 [inlined]
+eval_body at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:675
+jl_interpret_toplevel_thunk at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:884
+jl_toplevel_eval_flex at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:742
+jl_eval_toplevel_stmts at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:585
+jl_toplevel_eval_flex at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:683
+ijl_toplevel_eval at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:754 [inlined]
+ijl_toplevel_eval_in at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:799
+eval at ./boot.jl:489
+include_string at ./loading.jl:3016
+_include at ./loading.jl:3076
+include at ./Base.jl:309
+exec_options at ./client.jl:344
+_start at ./client.jl:577
+jfptr__start_37735.1 at /Users/a123456/.local/julia-1.13.0/lib/julia/sys.dylib (unknown line)
+jl_apply at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/julia.h:2318 [inlined]
+true_main at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/jlapi.c:985
+jl_repl_entrypoint at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/jlapi.c:1152
+unknown function (ip: 0x0) at (unknown file)
+Allocations: 12921048 (Pool: 12920882; Big: 166); GC: 8

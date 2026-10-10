@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{CKK12}
+T.~C.~Edwin Cheng, Hans Kellerer, and Vladimir Kotov.
+\newblock Algorithms better than {LPT} for semi-online scheduling with
+  decreasing processing times.
+\newblock {\em Operations Research Letters}, 40(5):349--352, 2012.
+
+\bibitem{Eps18}
+Leah Epstein.
+\newblock A survey on makespan minimization in semi-online environments.
+\newblock {\em Journal of Scheduling}, 21(3):269--284, 2018.
+
+\bibitem{SSW00}
+Steve~S. Seiden, Ji{\v{r}}{\'{i}} Sgall, and Gerhard~J. Woeginger.
+\newblock Semi-online scheduling with decreasing job sizes.
+\newblock {\em Operations Research Letters}, 27(5):215--221, 2000.
+
+\end{thebibliography}

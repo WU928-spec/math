@@ -19,3 +19,15 @@
 相关：计算证据包在 `../artifact/`（含 manifest.sha256 校验）。
 
 已清除：__pycache__、.DS_Store、watch_daemon.err。
+
+---
+
+## 2026-10 周期补充（m=4 A4c 上界 6/5）
+
+> 该周期的**现行定稿见 `../A4c_上界6over5_完整证明.md`**（m=4 竞争比 6/5，razor 紧；最优值 ∈ [ρ, 6/5]）。
+
+- **reports_2026_10/**：本周期子代理的独立工作报告（结论已被吸收进定稿或探索记录，留存供追溯）：
+  - `direction_C_report.md`（方向 C：不变量 I1/I2/I3 + DFF 封顶 5/4 的否定结论）；
+  - `invariant_p56_proof.md`（(p5,p6)-不变量：全局为假、Λ=p45 分支成立的诚实报告）；
+- 本周期的 BOARD.md 与 TL_proof_attempt.md **保留在顶层**（定稿 §12 引用；且 [ρ,6/5] 收口是存活问题，BOARD 不封存）；
+- 本周期的计算件全部在 `../code/m3_a3_verify/jl/`（含 razor 108 张证书 `razor_certs_u1..u6.txt`、双求解器日志、变体/混合规则筛查与博弈值 DP 脚本）。

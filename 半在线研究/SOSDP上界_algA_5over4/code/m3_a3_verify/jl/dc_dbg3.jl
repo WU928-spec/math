@@ -1,0 +1,10 @@
+include("a4_lib.jl")
+p = vcat([0.533333333], fill(4/15, 10))
+cs = opt_makespan(p, 4)
+println("C* = ", cs, "  min item = ", minimum(p ./ cs))
+pn = p ./ cs
+ms, asg, load = a4_sim(pn, A4(C_TARGET, [:p1, :p45], false, false))
+println("asg = ", asg)
+println("loads = ", round.(load, digits=5), "  makespan = ", round(ms, digits=6))
+println("(4,11) co-located: ", any(mm -> 4 in asg[mm] && 11 in asg[mm], 1:4))
+println("branch: p1=", round(pn[1],digits=5), " p4+p5=", round(pn[4]+pn[5],digits=5))

@@ -1,0 +1,25 @@
+### (8,11) @ full1
+   relaxed eps=0.0: NEVER(严格, 任意 tie-break)  [155.3s]
+### (4,11) @ full1
+   relaxed eps=0.0: FEASIBLE sim=true  p=0.53333 0.26667 0.26667 0.26667 0.26667 0.26667 0.26667 0.26667 0.26667 0.26667 0.26667  [0.0s]
+### (9,12) @ full45
+   relaxed eps=0.0: NEVER(严格, 任意 tie-break)  [55.6s]
+### (10,12) @ full45
+   relaxed eps=0.0: NEVER(严格, 任意 tie-break)  [29.5s]
+### (11,12) @ full45
+   relaxed eps=0.0: NEVER(严格, 任意 tie-break)  [38.2s]
+### (9,11) @ full1
+   relaxed eps=0.0: NEVER(严格, 任意 tie-break)  [185.5s]
+### (10,11) @ full1
+   relaxed eps=0.0: NEVER(严格, 任意 tie-break)  [89.8s]
+### (5,6) @ full45
+   relaxed eps=0.0: FEASIBLE sim=false  p=0.66667 0.66667 0.66667 0.33333 0.33333 0.26667  [0.5s]
+   exact eps=0.001: NEVER*(ε=0.001)  [0.5s]
+### (5,7) @ full45
+   relaxed eps=0.0: FEASIBLE sim=false  p=0.66667 0.66667 0.66667 0.33333 0.33333 0.26667 0.26667  [0.3s]
+   exact eps=0.001: NEVER*(ε=0.001)  [0.3s]
+### (5,8) @ full45
+   relaxed eps=0.0: FEASIBLE sim=false  p=0.599 0.44043 0.44043 0.33234 0.26667 0.26667 0.26667 0.26667  [0.0s]
+   exact eps=0.001: NEVER*(ε=0.001)  [0.4s]
+### (1,5) @ full1
+   relaxed eps=0.0: NEVER(严格, 任意 tie-break)  [0.0s]

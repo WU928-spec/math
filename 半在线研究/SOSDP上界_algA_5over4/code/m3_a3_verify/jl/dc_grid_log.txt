@@ -1,0 +1,184 @@
+#### start full45 5  (采样见证 4 对)
+═══ preds=full45  n=5  sem=exact eps=0.0001 ═══
+── preds=full45 n=5 汇总：
+   (1,5): WITNESS(sample)
+   (2,5): WITNESS(sample)
+   (3,5): WITNESS(sample)
+   (4,5): WITNESS(sample)
+#### done full45 5  0.3s
+#### start full45 6  (采样见证 4 对)
+═══ preds=full45  n=6  sem=exact eps=0.0001 ═══
+  (5,6): NEVER*(ε)  [1.3s]
+── preds=full45 n=6 汇总：
+   (1,6): WITNESS(sample)
+   (2,6): WITNESS(sample)
+   (3,6): WITNESS(sample)
+   (4,6): WITNESS(sample)
+   (5,6): NEVER*(ε)
+#### done full45 6  1.5s
+#### start full45 7  (采样见证 5 对)
+═══ preds=full45  n=7  sem=exact eps=0.0001 ═══
+  (5,7): NEVER*(ε)  [0.6s]
+── preds=full45 n=7 汇总：
+   (1,7): WITNESS(sample)
+   (2,7): WITNESS(sample)
+   (3,7): WITNESS(sample)
+   (4,7): WITNESS(sample)
+   (5,7): NEVER*(ε)
+   (6,7): WITNESS(sample)
+#### done full45 7  0.6s
+#### start full45 8  (采样见证 6 对)
+═══ preds=full45  n=8  sem=exact eps=0.0001 ═══
+  (5,8): NEVER*(ε)  [0.6s]
+── preds=full45 n=8 汇总：
+   (1,8): WITNESS(sample)
+   (2,8): WITNESS(sample)
+   (3,8): WITNESS(sample)
+   (4,8): WITNESS(sample)
+   (5,8): NEVER*(ε)
+   (6,8): WITNESS(sample)
+   (7,8): WITNESS(sample)
+#### done full45 8  0.6s
+#### start full45 9  (采样见证 8 对)
+═══ preds=full45  n=9  sem=exact eps=0.0001 ═══
+── preds=full45 n=9 汇总：
+   (1,9): WITNESS(sample)
+   (2,9): WITNESS(sample)
+   (3,9): WITNESS(sample)
+   (4,9): WITNESS(sample)
+   (5,9): WITNESS(sample)
+   (6,9): WITNESS(sample)
+   (7,9): WITNESS(sample)
+   (8,9): WITNESS(sample)
+#### done full45 9  0.0s
+#### start full45 10  (采样见证 9 对)
+═══ preds=full45  n=10  sem=exact eps=0.0001 ═══
+── preds=full45 n=10 汇总：
+   (1,10): WITNESS(sample)
+   (2,10): WITNESS(sample)
+   (3,10): WITNESS(sample)
+   (4,10): WITNESS(sample)
+   (5,10): WITNESS(sample)
+   (6,10): WITNESS(sample)
+   (7,10): WITNESS(sample)
+   (8,10): WITNESS(sample)
+   (9,10): WITNESS(sample)
+#### done full45 10  0.0s
+#### start full45 11  (采样见证 9 对)
+═══ preds=full45  n=11  sem=exact eps=0.0001 ═══
+  (9,11): WITNESS  p=0.57638 0.46637 0.46637 0.42352 0.42352 0.26687 0.26677 0.26677 0.26677 0.26667 0.26667  [6.9s]
+  (9,11) 分类: fill=true overflow=false
+── preds=full45 n=11 汇总：
+   (1,11): WITNESS(sample)
+   (2,11): WITNESS(sample)
+   (3,11): WITNESS(sample)
+   (4,11): WITNESS(sample)
+   (5,11): WITNESS(sample)
+   (6,11): WITNESS(sample)
+   (7,11): WITNESS(sample)
+   (8,11): WITNESS(sample)
+   (9,11): WITNESS[fill=1,overflow=0]
+   (10,11): WITNESS(sample)
+#### done full45 11  189.6s
+#### start full45 12  (采样见证 8 对)
+═══ preds=full45  n=12  sem=exact eps=0.0001 ═══
+  (9,12): NEVER*(ε)  [10.9s]
+  (10,12): NEVER*(ε)  [32.7s]
+  (11,12): NEVER*(ε)  [10.1s]
+── preds=full45 n=12 汇总：
+   (1,12): WITNESS(sample)
+   (2,12): WITNESS(sample)
+   (3,12): WITNESS(sample)
+   (4,12): WITNESS(sample)
+   (5,12): WITNESS(sample)
+   (6,12): WITNESS(sample)
+   (7,12): WITNESS(sample)
+   (8,12): WITNESS(sample)
+   (9,12): NEVER*(ε)
+   (10,12): NEVER*(ε)
+   (11,12): NEVER*(ε)
+#### done full45 12  53.7s
+#### start full1 5  (采样见证 3 对)
+═══ preds=full1  n=5  sem=exact eps=0.0001 ═══
+  (1,5): NEVER*(ε)  [0.0s]
+── preds=full1 n=5 汇总：
+   (1,5): NEVER*(ε)
+   (2,5): WITNESS(sample)
+   (3,5): WITNESS(sample)
+   (4,5): WITNESS(sample)
+#### done full1 5  0.0s
+#### start full1 6  (采样见证 4 对)
+═══ preds=full1  n=6  sem=exact eps=0.0001 ═══
+  (1,6): WITNESS  p=0.53333 0.53333 0.53333 0.26667 0.26667 0.26667  [0.0s]
+  (1,6) 分类: fill=false overflow=true
+── preds=full1 n=6 汇总：
+   (1,6): WITNESS[fill=0,overflow=1]
+   (2,6): WITNESS(sample)
+   (3,6): WITNESS(sample)
+   (4,6): WITNESS(sample)
+   (5,6): WITNESS(sample)
+#### done full1 6  0.0s
+#### start full1 7  (采样见证 6 对)
+═══ preds=full1  n=7  sem=exact eps=0.0001 ═══
+── preds=full1 n=7 汇总：
+   (1,7): WITNESS(sample)
+   (2,7): WITNESS(sample)
+   (3,7): WITNESS(sample)
+   (4,7): WITNESS(sample)
+   (5,7): WITNESS(sample)
+   (6,7): WITNESS(sample)
+#### done full1 7  0.0s
+#### start full1 8  (采样见证 7 对)
+═══ preds=full1  n=8  sem=exact eps=0.0001 ═══
+── preds=full1 n=8 汇总：
+   (1,8): WITNESS(sample)
+   (2,8): WITNESS(sample)
+   (3,8): WITNESS(sample)
+   (4,8): WITNESS(sample)
+   (5,8): WITNESS(sample)
+   (6,8): WITNESS(sample)
+   (7,8): WITNESS(sample)
+#### done full1 8  0.0s
+#### start full1 9  (采样见证 8 对)
+═══ preds=full1  n=9  sem=exact eps=0.0001 ═══
+── preds=full1 n=9 汇总：
+   (1,9): WITNESS(sample)
+   (2,9): WITNESS(sample)
+   (3,9): WITNESS(sample)
+   (4,9): WITNESS(sample)
+   (5,9): WITNESS(sample)
+   (6,9): WITNESS(sample)
+   (7,9): WITNESS(sample)
+   (8,9): WITNESS(sample)
+#### done full1 9  0.0s
+#### start full1 10  (采样见证 9 对)
+═══ preds=full1  n=10  sem=exact eps=0.0001 ═══
+── preds=full1 n=10 汇总：
+   (1,10): WITNESS(sample)
+   (2,10): WITNESS(sample)
+   (3,10): WITNESS(sample)
+   (4,10): WITNESS(sample)
+   (5,10): WITNESS(sample)
+   (6,10): WITNESS(sample)
+   (7,10): WITNESS(sample)
+   (8,10): WITNESS(sample)
+   (9,10): WITNESS(sample)
+#### done full1 10  0.0s
+#### start full1 11  (采样见证 6 对)
+═══ preds=full1  n=11  sem=exact eps=0.0001 ═══
+  (4,11): AMBIG  p=0.68333 0.36667 0.36667 0.36667 0.31667 0.31667 0.31667 0.31667 0.31667 0.31667 0.26667  [7.5s]
+  (8,11): UNKNOWN 状态=TIME_LIMIT  [180.0s]
+  (9,11): NEVER*(ε)  [164.8s]
+  (10,11): NEVER*(ε)  [67.0s]
+── preds=full1 n=11 汇总：
+   (1,11): WITNESS(sample)
+   (2,11): WITNESS(sample)
+   (3,11): WITNESS(sample)
+   (4,11): AMBIG
+   (5,11): WITNESS(sample)
+   (6,11): WITNESS(sample)
+   (7,11): WITNESS(sample)
+   (8,11): UNKNOWN(TIME_LIMIT)
+   (9,11): NEVER*(ε)
+   (10,11): NEVER*(ε)
+#### done full1 11  419.4s

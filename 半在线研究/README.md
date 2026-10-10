@@ -1,22 +1,27 @@
 # 半在线（Semi-Online）调度研究 · 总目录
 
 > 主题：SOSDP（decreasing processing times 半在线调度）及其近亲模型。
-> 核心问题轴：**上界 5/4（CKK Algorithm A）↔ 下界 (1+√37)/6 ≈ 1.18046（SSW）之间的 gap**。
+> 核心问题轴：**上界（算法）↔ 下界（SSW 式对抗构造）之间的 gap**。分 m 状态：m=2 闭合（7/6）；m=3 闭合（c=(1+√37)/6，SSW 下界 = CKK A3 上界）；**m=4：上界 6/5（本项目 A4c，razor 紧，2026-10）↔ 下界 ρ=1.18046（9 任务对抗族）——最优值 ∈ [ρ, 6/5]，收口开放**；∀m≥4：Algorithm A ≤ 5/4（2026-09 定稿）。
 
 ## 目录结构与三条线
 
 ### SOSDP上界_algA_5over4/（上界线·当前主项目）
-CKK 2012 Algorithm A 竞争比 ≤ 5/4 的证明（m ≥ 4 半在线递减到达）。
-- **完整证明_5over4.md** —— ★ **本线现行定稿**。第 I 部分＝第一证明（极小反例，引理 T''）+ 第 II 部分＝razor 带 LP 第二证明（∀m 零证书：端点三段 + uncond 层 T2+B4 + 薄层 Qcount 闭式）+ 附录 A–E；
+CKK 2012 Algorithm A 竞争比 ≤ 5/4 的证明（m ≥ 4 半在线递减到达），以及 **2026-10 周期的 m=4 突破**。
+- **A4c_上界6over5_完整证明.md** —— ★★ **2026-10 周期定稿（本线最新主结果）**：m=4 算法 A4c（安全线 τ=ρ·max{p₁,p₄+p₅}，最满合格/最轻兜底，O(n)）竞争比 ≤ 6/5 且在 razor 实例精确取等——**m=4 首个优于 LPT/Algorithm A（5/4）的结果**。证明形态：五层化约（手证）+ razor 层 108 张精确有理对偶证书（零容差）+ 79 形状全图与逐片封底（双求解器背书）+ 容差附录 + 可复现包。附带对偶闭环：m=4 最优竞争比 ∈ [ρ, 6/5]；
+- **m4_候选算法探索记录.md** —— 2026-10 周期全程（§2x–§3zm）：候选算法搜索、五层化约攻坚、作废引理勘误史、[ρ,6/5] 收口的首轮侦察（8 个变体全阵亡 + razor 博弈值 DP：固定序列 1.1 / 自适应 7/6）；
+- **TL_proof_attempt.md** —— 化约引擎（D1–D6′）与各层手证完整技术文档（定稿 §3/§5–§7 的出处；含 TL/目标 R 等作废目标的证伪记录）；
+- **BOARD.md** —— 本周期的多代理协作白板（未封存：[ρ,6/5] 收口是存活问题）；
+- 方法库对应沉淀：`../方法库/可复用引理库_2026-10.md`、`../方法库/复盘_可复用证明技巧_2026-10.md`；
+- **完整证明_5over4.md** —— ★ **∀m≥4 线定稿**。第 I 部分＝第一证明（极小反例，引理 T''）+ 第 II 部分＝razor 带 LP 第二证明（∀m 零证书：端点三段 + uncond 层 T2+B4 + 薄层 Qcount 闭式）+ 附录 A–E；
 - CKK2012_SOSDP_Algorithms_better_than_LPT.md —— 原论文（md 版，背景资料）；⚠️ 该摘要件**只收录了 §2（5/4）**，未收录 §3；
 - **CKK2012_SOSDP_Algorithms_better_than_LPT.pdf** —— 原文扫描件（4 页；**图像版、无文本层**，带水印）。其 OCR 文本见 `code/archive/tmp_harvest/m3_source/ckk2012_ocr.txt`（便于检索与核对 §3 还原）；
 - **CKK2012_m3最优上界_A3_完整证明.md** —— ★ 补齐上述缺口：原文 §3（m=3 专用算法 A3，竞争比恰为 c=(1+√37)/6，与 SSW 下界相等故 m=3 完全闭合）的逐条严谨还原。含 A3 定义、定理 2、O1–O9 全部观察、Case 1/2 全套子情形，并把原文 "elementary calculations"／"hence" 带过的步骤逐一补出（基例 n≤5、p4+p9≤2/3、L0/L 是 C* 下界等）；
-- **code/m3_a3_verify/** —— 该文档的验证脚本：`bound_lp.py`（逐条数值界的精确 LP）、`base_case_lp.py`（基例 n≤5 逐分支 LP，得 R=c）、`base_case_random.py` / `a3_crosscheck.py` / `n9_claim.py`（随机对拍与中间界的适用性检验）；
+- **code/m3_a3_verify/** —— 该文档的验证脚本。**Julia 主套件** `jl/`（JuMP + HiGHS，`julia --project=. tests_bounds_m3.jl` / `tests_random.jl` / `tests_m4_coords.jl` / `tests_base_case_m3.jl`）：§6 界表、随机对拍、基例逐分支 LP，以及 **m=4 候选值坐标筛选**；Python 等价脚本 `bound_lp.py` 等作为交叉检查保留。⚠️ 该套件曾纠正文档的一处错误（原“引理 G′”不成立，已改为引理 G(ii)）；
 - LP_CONSTRAINTS.md —— 22 条 LP 角落约束逐条合法性审计（定稿附录 E / B.1 引用）；
 - hole_close_lemma.md —— mon2 / 保序引理出处（定稿附录 B.5 引用）；
 - 作废引理_sliver紧性.md —— sliver 紧性引理作废记录 + 反例（定稿修订记录引用）；
 - pocket3_counting.md —— 引理 P3C（口袋 3 纯计数闭合；有效，尚未并入定稿 §6'）；
-- **archive/** —— 过程文献与历史版本：`reports/`（多代理时代工作报告）、`drafts/`（废稿）、`data/`（大证书 gzip，gunzip 即恢复）、`superseded/`（已被定稿取代的证明旧版）、`collab/`（BOARD/PROTOCOL/OWNERS 等协作基建）；
+- **archive/** —— 过程文献与历史版本：`reports_2026_10/`（m=4 A4c 周期的子代理工作报告）、`drafts/`（废稿）、`data/`（大证书 gzip，gunzip 即恢复）、`superseded/`（已被定稿取代的证明旧版）、`collab/`（BOARD/PROTOCOL/OWNERS 等协作基建）；
 - **artifact/** —— 口袋 2 计算闭合证据包（证书 + 独立复核器 + manifest.sha256）；
 - **code/** —— 复用模块与验证器在顶层；`code/archive/`＝一次性探测脚本，`code/data/`＝可再生中间产物。
 

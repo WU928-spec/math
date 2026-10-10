@@ -1,0 +1,649 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{definition}
+
+\newcommand{\opt}{\mathrm{OPT}}
+\newcommand{\alg}{\mathrm{alg}}
+
+\title{The $(1+\sqrt{37})/6$ lower bound for semi-online scheduling with
+decreasing processing times:\\ a first proof for all $m\ge 4$}
+\author{Chaojin Wu\thanks{A preprint of this work is available at Zenodo, DOI: 10.5281/zenodo.22953110.}\\
+Independent Researcher\\
+ORCID: 0009-0008-7322-9291}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We consider semi-online scheduling with decreasing processing times: jobs
+arrive in non-increasing order of size, each job must be assigned irrevocably
+upon arrival, and the adversary may stop the sequence at any prefix. Seiden,
+Sgall and Woeginger (2000) proved that for $m=3$ no deterministic algorithm
+achieves competitive ratio below $c=(1+\sqrt{37})/6\approx 1.18046$. Cheng,
+Kellerer and Kotov (2012) gave an algorithm with ratio $5/4$ for every
+$m\ge 3$, stating that the lower bound $c$ holds for all $m\ge 3$ and
+attributing it to the former work. That work, however, proved only $m=3$;
+the case $m\ge 4$ was stated without proof and is recorded as open in
+Epstein's 2018 survey.
+We give the first proof of the $c$ lower bound for all $m\ge 4$ (indeed all
+$m\ge 3$), in two independent ways: a \emph{padding lemma} that transfers an
+adversarial instance from $m$ to $m+1$ machines while preserving its
+guarantee, applied to the instance above; and an explicit adversarial family
+$(1^{m-1},r^{m-1},s^{m-1})$ with $r=(2+\sqrt{37})/11$ and
+$s=(13+\sqrt{37})/33$. The gap between $c$ and the $5/4$ upper bound remains
+open on the algorithmic side.
+\end{abstract}
+
+\section{Introduction}
+
+Semi-online scheduling with decreasing processing times (SOSDP) is a
+classical model of non-clairvoyant load balancing: $m$ identical parallel
+machines are given, jobs arrive one by one in \emph{non-increasing} order of
+their processing times, and each job must be assigned to a machine
+immediately and irrevocably, before the next job is seen; the adversary may
+stop the sequence at any prefix. For two machines the optimal competitive
+ratio of deterministic algorithms is the bound $7/6$ of Graham, shown best
+possible in the decreasing model by Seiden, Sgall and
+Woeginger~\cite{SSW00}. Seiden, Sgall and Woeginger~\cite{SSW00} proved
+that for three machines no deterministic algorithm can achieve a competitive
+ratio below
+\[
+c \;=\; \frac{1+\sqrt{37}}{6}\;\approx\;1.180460,
+\]
+the unique root of $3c^{2}-c-3=0$ above $1$, via an explicit adversarial
+instance. Cheng, Kellerer and Kotov~\cite{CKK12} designed an algorithm of
+competitive ratio $5/4$ for every $m\ge 3$, whose specialization to $m=3$
+matches $c$ and thus settles three machines; for $m\ge 4$, however, their
+upper bound $5/4$ and the value $c$ remained apart.
+
+The lower-bound side of that gap has a curious history. The introduction
+of~\cite{CKK12} states that a lower bound of $(1+\sqrt{37})/6$ holds for all
+$m\ge 3$, attributing it to~\cite{SSW00}; yet~\cite{SSW00} proved only the
+case $m=3$, and the case $m\ge 4$ was stated without proof. To our
+knowledge no proof of the $c$ lower bound for $m\ge 4$ has appeared in the
+literature, and Epstein's survey~\cite{Eps18} records the optimal
+competitive ratio for $m\ge 4$ as an open problem.
+
+In this note we give the first proof of the $c$ lower bound for all $m\ge 4$
+(indeed all $m\ge 3$). We give two independent proofs. The first
+(Sections~\ref{sec:padding}--\ref{sec:base}) is a \emph{padding lemma}: an
+adversarial instance on $m$ machines that satisfies four natural invariants
+can be prefixed by a single job of size $G=(\sqrt{37}-1)/6=1/c$ to yield an
+instance on $m+1$ machines satisfying the same invariants with the same
+constants; applied to the instance of~\cite{SSW00}, induction gives the
+bound for all $m\ge 3$. The second proof (Section~\ref{sec:explicit}) is an
+explicit adversarial family: for every $m\ge 4$ the decreasing sequence
+$(1^{m-1},r^{m-1},s^{m-1})$, with $r=(2+\sqrt{37})/11$ and
+$s=(1+r)/3=(13+\sqrt{37})/33$, forces every deterministic algorithm to ratio
+at least $c$; after scaling by $1+r$ this family embeds the three-machine
+instance of~\cite{SSW00} verbatim, since $1/(1+r)=(13-\sqrt{37})/12$ is
+exactly the largest job of that instance. The two arguments are independent
+of each other and cross-check the same constant $c$. We conclude in
+Section~\ref{sec:conclusion} with the remaining open questions.
+
+\section{Preliminaries}
+\label{sec:prelim}
+
+\paragraph{Model.}
+Jobs arrive in non-increasing order $p_{1}\ge p_{2}\ge\cdots\ge p_{n}$ and
+must be assigned irrevocably to one of $m$ identical machines upon arrival.
+The adversary may declare ``stop'' after any prefix; if the arrived multiset
+is $P$, the algorithm's makespan $L_{\alg}(P)$ is the maximum machine load,
+and $\opt_{m}(P)$ is the optimal offline makespan. The competitive ratio of
+a deterministic algorithm $A$ is
+\[
+R(A) \;=\; \sup_{P}\ \frac{L_{\alg}(P)}{\opt_{m}(P)},
+\]
+where the supremum is over all stopping prefixes the adversary may produce.
+An \emph{adversarial strategy} is a decreasing sequence together with a
+stopping rule, which may depend on the algorithm's assignment history; the
+strategies of~\cite{SSW00} are of this adaptive type. Saying that an
+instance $J$ \emph{guarantees ratio at least $\varrho$} means that against
+every deterministic algorithm the adversary, playing this strategy, reaches
+a stopping point with $L_{\alg}(P)\ge\varrho\cdot\opt_{m}(P)$.
+
+\paragraph{Notation.}
+For a job multiset $J$ write $p_{\min}(J)$ and $p_{\max}(J)$ for its smallest
+and largest job. The constants used throughout are
+\[
+c=\frac{1+\sqrt{37}}{6}\approx 1.180460,
+\qquad\text{root of } 3c^{2}-c-3=0,
+\]
+together with $r$, $s$, $G$ and $x$ introduced below.
+
+\paragraph{Two auxiliary facts.}
+\begin{lemma}[Monotonicity of $\opt$]
+\label{lem:mono}
+If $Q'\subseteq Q$ as multisets, then $\opt_{m}(Q')\le\opt_{m}(Q)$.
+\end{lemma}
+\begin{proof}
+Take an optimal assignment of $Q$ and delete the jobs of $Q\setminus Q'$;
+machine loads only decrease, yielding a feasible assignment of $Q'$ with
+makespan at most $\opt_{m}(Q)$.
+\end{proof}
+
+\begin{lemma}[Isolation of a large job]
+\label{lem:isolate}
+Let $G$ be no smaller than any job of $Q$. Then
+\[
+\opt_{m+1}(\{G\}\cup Q)\;\le\;\max\bigl(G,\ \opt_{m}(Q)\bigr).
+\]
+\end{lemma}
+\begin{proof}
+Place $G$ alone on machine $m+1$ and schedule $Q$ optimally on the remaining
+$m$ machines. This is a feasible assignment of $\{G\}\cup Q$ with makespan
+$\max(G,\opt_{m}(Q))$, so the optimum is no larger. (Only the upper bound is
+needed; $\opt_{m+1}(\{G\}\cup Q)\ge G$ holds trivially.)
+\end{proof}
+
+\section{The padding lemma}
+\label{sec:padding}
+
+Throughout this section
+\[
+G \;:=\; c-\tfrac13 \;=\; \frac{\sqrt{37}-1}{6}\;\approx\;0.847127 .
+\]
+\begin{lemma}
+\label{lem:cG}
+$cG=1$; equivalently $G=1/c$.
+\end{lemma}
+\begin{proof}
+$cG=c^{2}-c/3$. From $3c^{2}-c-3=0$ we have $c^{2}=(c+3)/3$, hence
+$cG=(c+3)/3-c/3=3/3=1$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:range}
+$1/3<G<1$.
+\end{lemma}
+\begin{proof}
+$G>1/3\iff\sqrt{37}-1>2\iff\sqrt{37}>3\iff 37>9$; and
+$G<1\iff\sqrt{37}<7\iff 37<49$.
+\end{proof}
+
+\begin{theorem}[Padding lemma]
+\label{thm:padding}
+Let $m\ge 2$, let $J$ be a decreasing job sequence on $m$ machines, and let
+$S$ be an adversarial strategy on $J$ satisfying the four invariants
+\begin{itemize}
+\item[\textbf{(I1)}] $\opt_{m}(J)\le 1$;
+\item[\textbf{(I2)}] $p_{\min}(J)=1/3$ and $p_{\max}(J)\le G$;
+\item[\textbf{(I3)}] at every stopping point of $S$, the algorithm's
+makespan is at least $1$;
+\item[\textbf{(I4)}] $S$ guarantees ratio at least $c$, i.e.\ at every
+stopping point $L_{\alg}\ge c\cdot\opt_{m}(P)$, where $P$ is the prefix
+stopped at.
+\end{itemize}
+Form the new sequence $J'=(G,J)$ by inserting one job of size $G$ at the
+front. Then:
+\begin{enumerate}
+\item $J'$ is a legal decreasing sequence on $m+1$ machines;
+\item there is an adversarial strategy $S'$ on $m+1$ machines such that
+$(J',S')$ satisfies \emph{(I1)--(I4)} again (with the same constant $G$ in
+the role of $p_{\max}$).
+\end{enumerate}
+\end{theorem}
+
+Since conclusion 2 preserves all invariants and $G$ is unchanged, the lemma
+applies repeatedly for $m=3,4,5,\dots$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:padding}]
+\emph{Step 0: $J'$ is a legal decreasing sequence.}
+The first job of $J'$ is $G$ and the rest are $J$; by (I2),
+$G\ge p_{\max}(J)$, so $G$ is no smaller than any later job and the
+non-increasing order is preserved.
+
+\emph{Step 1: (I1$'$) holds, $\opt_{m+1}(J')\le 1$.}
+By Lemma~\ref{lem:isolate} with $Q=J$ (its hypothesis $G\ge p_{\max}(J)$ is
+(I2)),
+\[
+\opt_{m+1}(J')=\opt_{m+1}(\{G\}\cup J)
+ \le \max\bigl(G,\opt_{m}(J)\bigr)
+ \le \max(G,1)=1,
+\]
+using (I1) and $G<1$ (Lemma~\ref{lem:range}). Note that only ``$\le$'' is
+needed, not equality: after one iteration $\opt$ may drop strictly below $1$
+(for instance, placing the three-machine instance of~\cite{SSW00} on four
+machines gives $\opt\le\max\{1-x+1-x,\ x+1/3\}\approx0.9098<1$)---a smaller
+denominator only strengthens the adversary.
+
+\emph{Step 2: (I2$'$) holds.}
+$p_{\min}(J')=\min(G,p_{\min}(J))=\min(G,1/3)=1/3$ since $G>1/3$
+(Lemma~\ref{lem:range}); and $p_{\max}(J')=G$ since $G\ge p_{\max}(J)$ by
+(I2).
+
+\emph{Step 3: the new strategy $S'$.}
+The adversary first releases $G$, and then:
+\begin{itemize}
+\item \textbf{Rule $\alpha$.} From the moment $G$ has been released, as soon
+as the algorithm places some job $q$ (necessarily a job of $J$) on the
+machine holding $G$, the adversary stops immediately at that prefix.
+\item \textbf{Rule $\beta$.} If the algorithm never places any job on $G$'s
+machine, the adversary treats the remaining $m$ machines as an $m$-machine
+game, releases all of $J$ on them following the original strategy $S$, and
+uses the stopping rule of $S$.
+\end{itemize}
+Every deterministic algorithm behaves in exactly one of two ways: at some
+moment it touches $G$'s machine (Rule $\alpha$ fires), or it never does
+(Rule $\beta$ applies). We verify that in both cases $S'$ guarantees ratio
+at least $c$ and stopping-load at least $1$.
+
+\emph{Step 4: Case $\alpha$ (the algorithm touches $G$'s machine).}
+Suppose the algorithm places $q$ on $G$'s machine and the adversary stops.
+That machine's load is at least $G+q$; since $q\in J$ we have
+$q\ge p_{\min}(J)=1/3$ by (I2), hence
+\[
+L_{\alg}\;\ge\;G+\tfrac13\;=\;\bigl(c-\tfrac13\bigr)+\tfrac13\;=\;c .
+\]
+If $P$ is the released prefix, then $P\subseteq J'$, so by
+Lemma~\ref{lem:mono} and Step~1,
+\[
+\opt_{m+1}(P)\le\opt_{m+1}(J')\le 1,
+\qquad\text{hence}\qquad
+\frac{L_{\alg}}{\opt_{m+1}(P)}\;\ge\;\frac{c}{1}\;=\;c .
+\]
+This is (I4$'$) at this stopping point; and $L_{\alg}\ge c>1$ gives (I3$'$).
+(The equality $G+1/3=c$ is the first constraint on $G$ from the lemma:
+$G\ge c-p_{\min}$; here it is met with equality.)
+
+\emph{Step 5: Case $\beta$ (the algorithm never touches $G$'s machine).}
+All jobs of $J$ are placed by the algorithm on the remaining $m$ machines,
+the position is exactly the $m$-machine game, and the adversary legally
+executes $S$. Suppose $S$ stops at some stopping point, corresponding to a
+prefix $P$ of $J$, and the algorithm's makespan on those $m$ machines is
+$L$.
+
+(a) \emph{The total makespan on $m+1$ machines equals $L$.}
+$G$ occupies one machine alone with load $G$; the largest of the remaining
+loads is $L$. By (I3), $L\ge 1>G$ (Lemma~\ref{lem:range}), so the total
+makespan is $\max(G,L)=L\ge 1$---(I3$'$) holds at this stopping point.
+
+(b) \emph{Upper bound on the new $\opt$.}
+The released prefix of $J'$ is $\{G\}\cup P$; by (I2), $G\ge p_{\max}(J)\ge$
+any job of $P$, so Lemma~\ref{lem:isolate} applies:
+\[
+\opt_{m+1}(\{G\}\cup P)\;\le\;\max\bigl(G,\ \opt_{m}(P)\bigr).
+\]
+
+(c) \emph{The ratio.}
+By (I4), $L\ge c\cdot\opt_{m}(P)$; by (I3) and Lemma~\ref{lem:cG},
+$L\ge 1=cG$. Combining,
+\[
+\begin{aligned}
+L&\;\ge\;\max\bigl(cG,\ c\cdot\opt_{m}(P)\bigr)
+ \;=\;c\cdot\max\bigl(G,\opt_{m}(P)\bigr)\\
+ &\;\ge\;c\cdot\opt_{m+1}(\{G\}\cup P).
+\end{aligned}
+\]
+With (a) (total makespan $=L$),
+\[
+\frac{L_{\alg}}{\opt_{m+1}(\{G\}\cup P)}\;\ge\;c .
+\]
+(I4$'$) holds at this stopping point.
+
+\emph{Step 6: conclusion.}
+Steps 0--2 give legality of $J'$ and (I1$'$)(I2$'$); Step~3 defines $S'$;
+Steps 4 and~5 exhaust all algorithm behaviours and show that every stopping
+point of $S'$ satisfies (I3$'$)(I4$'$). Hence $(J',S')$ satisfies all four
+invariants, with the same bound $G$ on $p_{\max}$.
+\end{proof}
+
+\begin{remark}[Single-point collapse]
+\label{rem:collapse}
+Summarizing the constraints on the padding constant (with $p_{\min}=1/3$ and
+minimum stopping load $1$):
+\begin{enumerate}
+\item decreasing order: $G\ge p_{\max}(J)$;
+\item invariant (I2$'$): $G>1/3$;
+\item Case $\alpha$: $G+1/3\ge c$, i.e.\ $G\ge c-1/3\approx0.847127$;
+\item Case $\beta$: one needs $L\ge cG$ at the minimum stopping load $L=1$,
+i.e.\ $G\le 1/c\approx0.847127$.
+\end{enumerate}
+Now $c-1/3=1/c$ is precisely a rewriting of the defining equation
+$3c^{2}-c-3=0$, so the feasible interval $[c-1/3,\,1/c]$ collapses to the
+single point $G=(\sqrt{37}-1)/6$. The padding strategy has no freedom
+whatsoever: it succeeds exactly because of this algebraic property of $c$.
+\end{remark}
+
+\begin{remark}[Why naive padding with $G=1$ fails]
+\label{rem:g1fails}
+Take $J'=(1,\,x,\,x,\,1-x,\,1-x,\,1/3,\,1/3,\,1/3)$ on $m=4$ machines,
+where $x=(13-\sqrt{37})/12$. The algorithm places the job $1$ alone on
+machine~$4$ and then \emph{deliberately pairs the two jobs $x$}: load
+$2x\approx1.1529$, but the prefix $\{1,x,x\}$ contains a job of size $1$, so
+$\opt_{4}\ge1$ (and $\le1$), giving ratio $2x/1\approx1.1529<c$. Whether
+the adversary stops here or releases the remaining jobs, the algorithm keeps
+the final ratio at about $1.15$ (the remaining jobs $1-x,1-x,1/3,1/3,1/3$
+fit into the two empty machines and the lightly loaded ones, final makespan
+$\approx1.153$, while $\opt(J')=1$). The reason is exactly the violation of
+constraint~4 above: $c\cdot1=c>1$, and in Case $\beta$ ``$\opt$ is lifted
+to $1$ by the large job'' swamps every stopping point whose load is below
+$c$ (in the $m=3$ strategy of~\cite{SSW00}, Case~A has load $1$ and
+$\opt=2(1-x)\approx0.847$; after padding with $G=1$ the ratio collapses to
+$1/1=1$). The padding lemma is not free: it requires the base instance to
+meet ``$\opt\le1$, $p_{\min}=1/3$, stopping load $\ge1$'' simultaneously, and
+the existence of $G$ is equivalent to $c-1/3\le1/c$, i.e.\
+$3c^{2}-c-3\le0$---of which $c$ is the root, with equality. The special
+role of the SSW constant thus receives a second, independent witness
+(the first being the $m=3$ balancing itself).
+\end{remark}
+
+\section{Base case: the SSW instance}
+\label{sec:base}
+
+\begin{lemma}
+\label{lem:base}
+Let $c=(1+\sqrt{37})/6$ and $x=(13-\sqrt{37})/12\approx0.576436$. The
+instance
+\[
+J_{\mathrm{SSW}}=\bigl(x,\ x,\ 1-x,\ 1-x,\ \tfrac13,\ \tfrac13,\ \tfrac13\bigr)
+\]
+on three machines, together with the adversarial strategy of~\cite{SSW00},
+satisfies \emph{(I1)--(I4)} of Theorem~\ref{thm:padding}.
+\end{lemma}
+\begin{proof}
+\emph{(I1)} $\opt_{3}(J_{\mathrm{SSW}})=1$. Upper bound: the partition
+$\{x,1-x\},\{x,1-x\},\{1/3,1/3,1/3\}$ loads every machine to exactly $1$.
+Lower bound: $\opt=1$ as proved in~\cite{SSW00}.
+
+\emph{(I2)} $p_{\min}=1/3$; and $p_{\max}=x\le G$ follows from
+$x<G\iff(13-\sqrt{37})/12<(2\sqrt{37}-2)/12\iff15<3\sqrt{37}\iff5<\sqrt{37}
+\iff25<37$.
+
+\emph{(I3)} The stopping loads of the strategy of~\cite{SSW00} are checked
+case by case: among the first three jobs $(x,x,1-x)$, if two share a
+machine the adversary stops with load
+$\ge\min(2x,\,x+(1-x))=\min(2x,1)=1$ (since
+$2x=(13-\sqrt{37})/6\ge1\iff13-\sqrt{37}\ge6\iff\sqrt{37}\le7$); Case~A
+stops with load exactly $1$; the terminal stopping of Case~B has load
+$\ge c>1$. All are $\ge1$.
+
+\emph{(I4)} This is the theorem of~\cite{SSW00} itself: the instance
+guarantees ratio at least $c$ for $m=3$.
+\end{proof}
+
+\begin{theorem}
+\label{thm:main}
+In the SOSDP model, for every $m\ge3$ the competitive ratio of every
+deterministic algorithm is at least $c=(1+\sqrt{37})/6$.
+\end{theorem}
+\begin{proof}
+Induction on $m$; the induction step is the padding lemma
+(Theorem~\ref{thm:padding}) with $G=(\sqrt{37}-1)/6$ unchanged, and the base
+case $m=3$ is Lemma~\ref{lem:base}.
+\end{proof}
+
+In particular, Theorem~\ref{thm:main} includes $m=4$, which to our knowledge
+is the first written proof of this fact: \cite{SSW00} constructed only
+$m=2,3$, and \cite{CKK12} cited the lower bound for $m\ge3$ without giving an
+argument.
+
+\section{An explicit adversarial family}
+\label{sec:explicit}
+
+This section gives a second, independent proof of the lower bound for all
+$m\ge4$, which is direct (no induction) and which, after scaling, embeds the
+three-machine instance of~\cite{SSW00} verbatim.
+
+\subsection{Constants and the balancing equations}
+
+Let
+\begin{gather*}
+c=\frac{1+\sqrt{37}}{6}\approx1.180460,\qquad
+r=\frac{2+\sqrt{37}}{11}\approx0.734797,\\
+s=\frac{1+r}{3}=\frac{13+\sqrt{37}}{33}\approx0.578266 .
+\end{gather*}
+The values of $r$ and $s$ are not guessed; each is forced by a balancing
+equation:
+\begin{itemize}
+\item \emph{Equation 1} (the stopping point where $r$ pairs with $1$ must
+equal exactly $c$):
+$\dfrac{1+r}{2r}=c\iff r=\dfrac{1}{2c-1}=\dfrac{2+\sqrt{37}}{11}$;
+\item \emph{Equation 2} (the terminal stopping point of the $s$-tail must
+equal exactly $c$):
+$\dfrac{2r+s}{1+r}=c\iff s=c(1+r)-2r=\dfrac{13+\sqrt{37}}{33}$.
+\end{itemize}
+In addition there is one ``free'' identity, not forced by the balancing:
+\begin{itemize}
+\item \emph{Identity 3}: $3s=1+r$, i.e.\ $s=(1+r)/3$.
+\end{itemize}
+Useful numerical values:
+$1+r\approx1.734797$, $2r\approx1.469594$, $3r\approx2.204391$,
+$2r+s\approx2.047859$, $1+2r\approx2.469594$, $1+r+s\approx2.313063$,
+$1+s\approx1.578266$, $1+2s\approx2.156531$.
+The order $1>r>s$ is legal: $r<1\iff\sqrt{37}<9\iff37<81$, and
+$s\le r\iff1+r\le3r\iff1\le2r\iff2\sqrt{37}\ge7\iff148\ge49$ (in fact
+$2r\approx1.47>1$). The key observation is the rewriting of Equation~2:
+\begin{equation}
+\label{eq:key}
+c(1+r)=2r+s ;
+\end{equation}
+it translates the adversary's budget into a concrete number: on any prefix
+with $\opt=1+r$, any machine load reaching $2r+s\approx2.0479$ lets the
+adversary stop with ratio at least $c$.
+
+\subsection{Prefix OPT lemma}
+
+\begin{lemma}
+\label{lem:prefix}
+For $m\ge4$:
+\begin{itemize}
+\item[\emph{(a)}] $\opt(1^{j})=1$ for $j\le m-1$;
+\item[\emph{(b)}] $\opt(1^{m-1},r)=1$;
+\item[\emph{(c)}] $\opt(1^{m-1},r^{2})=2r$;
+\item[\emph{(d)}] $\opt(1^{m-1},r^{j})=1+r$ for $j\ge3$;
+\item[\emph{(e)}] $\opt(1^{m-1},r^{m-1},s^{k})=1+r$ for $k\le3$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+(a),(b): at most $m$ jobs, each occupies one machine alone, the largest job
+is $1$.
+
+(c) Upper bound: $\{r,r\}$ on one machine, the remaining $m-1$ jobs alone on
+the other machines; makespan $\max(2r,1)=2r$ since $2r\approx1.47>1$. Lower
+bound: there are $m+1$ jobs and $m$ machines, so some pair shares a machine;
+the cheapest pair is $\{r,r\}=2r$ (all others, $\{1,r\}=1+r$ and $\{1,1\}=2$,
+are more expensive), so $\opt\ge2r$.
+
+(d) Upper bound: $\{1,r\}$ on $j$ machines, the remaining $m-1-j$ jobs $1$
+alone, $m-1$ machines in total, makespan $1+r$. Lower bound: suppose all
+loads were $<1+r$. No machine can contain $\{1,1\}$, $\{1,r\}$, or three
+$r$'s (as $3r>1+r$). Hence every $1$ stands alone, occupying $m-1$
+machines; the $j\ge3$ jobs $r$, at most two per machine, need at least two
+more machines. In total at least $m+1>m$ machines, contradiction.
+
+(e) Upper bound: $\{1,r\}$ on $m-1$ machines, and the $k$ jobs $s$ on the
+$m$-th machine, of load $ks\le3s=1+r$ (Identity~3, $k\le3$). Lower bound:
+same contradiction as (d). Under the supposition that all loads are
+$<1+r$, the bans of (d) still apply, and $s$ cannot rescue the packing: the
+only placements of an $s$ into a machine of load $<1+r$ are $\{1,s\}$ and
+the singleton $\{r,s\}$ (since $\{r,r,s\}=2r+s>1+r$ and
+$\{1,s,s\}=1+2s>1+r$); in particular $\{1,s\}$ is the only pairing of an
+$s$ with a $1$-machine, $\{r,s,s\}$ and $\{s,s,s\}$ are forbidden, and so
+each $1$-machine can absorb at most one $s$. None of this changes the
+counting that the $m-1$ jobs $1$ occupy $m-1$ machines and the $r$'s still
+need at least two further machines: in total at least $m+1>m$ machines,
+contradiction.
+\end{proof}
+
+In one sentence: on every prefix at which the adversary might stop, $\opt$
+takes only three values---$1$ (pure $1$'s or a single $r$), $2r$ (two
+$r$'s), and $1+r$ (everything else).
+
+\subsection{The adversarial strategy}
+
+The adversary plays the sequence
+$S_{m}=(1^{m-1},r^{m-1},s^{m-1})$ with the following stopping rules.
+
+\paragraph{Phase 1: the $m-1$ jobs $1$.}
+If some machine receives a second $1$ (load $2$), stop immediately. The
+ratio is $2/1=2>c$ since $\opt(1^{j})=1$ for $j\le m-1$ (Lemma~\ref{lem:prefix}(a)).
+Thereafter we may assume the $m-1$ jobs $1$ occupy $m-1$ distinct machines
+$A_{1},\dots,A_{m-1}$ (each of load $1$), leaving one empty machine $M^{*}$.
+
+\paragraph{Phase 2: the $m-1$ jobs $r$.}
+\emph{First $r$:} if it is placed on a $1$-machine (load $1+r$), stop; the
+prefix is $(1^{m-1},r)$ with $\opt=1$ (Lemma~\ref{lem:prefix}(b)) and ratio
+$1+r\approx1.7348>c$. So the algorithm is forced to place $r_{1}\to M^{*}$
+(load $r$).
+
+\emph{Second $r$:} if it is placed on a $1$-machine (load $1+r$), stop; the
+prefix is $(1^{m-1},r^{2})$ with $\opt=2r$ (Lemma~\ref{lem:prefix}(c)) and
+ratio $(1+r)/(2r)=c$ (Equation~1, exact). So the algorithm is forced to
+place $r_{2}\to M^{*}$ (load $2r$).
+
+\emph{$j$-th $r$ for $j=3,\dots,m-1$:} now $\opt$ has risen to $1+r$
+(Lemma~\ref{lem:prefix}(d)), and the stopping line is ``any machine load
+reaches $c(1+r)=2r+s$'' (Equation~\eqref{eq:key}). The algorithm's options:
+\begin{itemize}
+\item on $M^{*}$ (currently $2r$): load $\ge3r\approx2.204\ge2r+s$,
+stop, ratio $\ge3r/(1+r)=(\sqrt{37}-1)/4\approx1.2707>c$;
+\item on a $1$-machine already holding $r$ (currently $1+r$ or more): load
+$\ge1+2r\approx2.470\ge2r+s$, stop, ratio
+$\ge(1+2r)/(1+r)=(11+\sqrt{37})/12\approx1.4236>c$;
+\item on a $1$-machine still empty of $r$'s: load $1+r<2r+s$, \emph{safe},
+continue.
+\end{itemize}
+Hence the algorithm is forced to place $r_{3},\dots,r_{m-1}$ on $m-3$
+distinct $1$-machines. At the end of Phase~2 the forced configuration is:
+$M^{*}$ of load $2r\approx1.4696$; $m-3$ machines of load $1+r\approx1.7348$;
+and \emph{exactly two} $1$-machines of load $1$ (count check:
+$(m-1)-(m-3)=2$).
+
+\paragraph{Phase 3: the $m-1$ jobs $s$ (the clinch).}
+The stopping line is unchanged: any machine reaching $2r+s$ stops the game
+(Lemma~\ref{lem:prefix}(e) gives $\opt=1+r$ for prefixes
+$(1^{m-1},r^{m-1},s^{k})$, $k\le3$). The options are checked machine by
+machine:
+\begin{center}
+\scriptsize
+\begin{tabular}{@{}llll@{}}
+\toprule
+$s$ placed on & new load & crosses line? & stopping ratio \\
+\midrule
+$M^{*}$ ($2r$) & $2r+s$ & yes & $(2r+s)/(1+r)=c$ (Equation 2) \\
+$1+r$ machine & $1+r+s$ & yes & $1+s/(1+r)=4/3$ \\
+empty $1$-machine ($1$) & $1+s\approx1.578$ & \emph{no} & ---\ only safe place \\
+$1+s$ machine & $1+2s\approx2.157$ & yes & $(1+2s)/(1+r)=(21-\sqrt{37})/12$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+(For the third row, $1+s/(1+r)=4/3$ is exactly Identity~3.) Thus $s_{1}$ and
+$s_{2}$ are forced onto the \emph{only two} safe machines (each becoming
+$1+s$); when the \emph{third} $s$ arrives, every machine has load in
+$\{2r,\,1+r,\,1+s\}$ and every placement crosses the line. The adversary
+stops with ratio at least $c$; and $m-1\ge3$ guarantees that a third $s$
+exists---this is exactly where $m\ge4$ is used.
+
+\begin{theorem}
+\label{thm:explicit}
+For every $m\ge4$ and every deterministic algorithm $A$, the adversarial
+sequence $S_{m}=(1^{m-1},r^{m-1},s^{m-1})$ with the three-phase strategy
+above forces a stopping prefix $P$ with
+$L_{\alg}(P)\ge c\cdot\opt_{m}(P)$. Consequently $R(A)\ge c$ for all
+$m\ge4$.
+\end{theorem}
+\begin{proof}
+At every decision point the algorithm's possible placements are exactly
+those listed above (machines are classified by their loads, and machines of
+the same class are interchangeable); each class has been checked with no
+exceptions. All stopping ratios are at least $c$, two of them exactly $c$
+(Equations 1 and~2); placements with larger loads only increase the ratio.
+Since $m-1\ge3$, the third $s$ exists and the strategy terminates with
+ratio at least $c$.
+\end{proof}
+
+\subsection{Two remarks on the family}
+
+\begin{remark}[The family embeds the SSW instance after scaling]
+\label{rem:embed}
+Scale the instance $S_{m}$ by $1/(1+r)$. The smallest job becomes
+$s/(1+r)=1/3$ (exactly---this is the use of Identity~3), and the largest
+becomes
+\[
+\frac{1}{1+r}=\frac{11}{13+\sqrt{37}}
+=\frac{11(13-\sqrt{37})}{132}
+=\frac{13-\sqrt{37}}{12}=x,
+\]
+which is precisely the largest job of the three-machine instance
+of~\cite{SSW00}. The scaled family therefore satisfies
+$p_{\min}=1/3$, $p_{\max}=x\le G$ with the same $G$ as in
+Section~\ref{sec:padding}, and $\opt=1$. As for \emph{(I3)}, the possible
+stopping loads of the scaled family are all at least $1$: two $1$'s together
+give $2/(1+r)=2x\approx1.1529$ ($\ge1$ since $\sqrt{37}\le7$); the first $r$
+on a $1$-machine gives exactly $1$; three $r$'s together give
+$3r/(1+r)=(\sqrt{37}-1)/4\approx1.2707$; the terminal branch of the $s$-tail
+gives $(2r+s)/(1+r)=c\approx1.1805$; two $s$'s on a low machine give
+$(1+2s)/(1+r)=(21-\sqrt{37})/12\approx1.2431$; and an $s$ on a $1+r$ machine
+gives $4/3$. The family also guarantees ratio at least $c$. Hence it meets
+invariants (I1)--(I4), so the $m=4$ member of the family can serve
+as an \emph{alternative base case} for the padding lemma. The two routes
+of this paper---``SSW base case $+$ padding'' and ``explicit family
+$+$ padding''---are thus independent and mutually reinforcing.
+\end{remark}
+
+\begin{remark}[Value of the family]
+\label{rem:value}
+The value of this adversarial family---the ratio it forces against best
+play---is exactly $c$ for $m=4$: against $S_{4}$ the LPT algorithm places
+the three $1$'s on three machines, the first two $r$'s on the lightest
+machine (loads $r,2r$), the third $r$ on a $1$-machine ($1+r$), the first
+two $s$'s on the two load-$1$ machines ($1+s$ each), and the third $s$ on
+$M^{*}$ ($2r+s$), attaining makespan $2r+s=c(1+r)$ with every earlier
+prefix at ratio at most $1$; so no adversary can extract more than $c$ from
+$S_{4}$. For $m\ge5$ we do not know whether the family can be forced
+beyond $c$; we make no claim about the game value.
+\end{remark}
+
+\section{Concluding remarks}
+\label{sec:conclusion}
+
+For semi-online scheduling with decreasing processing times, the lower
+bound $c=(1+\sqrt{37})/6$ was known for $m=3$ since~\cite{SSW00}, while
+for $m\ge4$ it was stated without proof in~\cite{CKK12} and recorded as
+open in~\cite{Eps18}. We have given the first proof for all $m\ge4$ (indeed
+all $m\ge3$), by two independent routes: a padding lemma that lifts an
+adversarial instance from $m$ to $m+1$ machines at the price of prefixing
+one job of size $1/c$, and an explicit adversarial family that forces the
+bound directly. Both routes hinge on the same algebraic coincidence
+$c-1/3=1/c$, i.e.\ $3c^{2}-c-3=0$.
+
+The gap between the lower bound $c$ and the upper bound $5/4$
+of~\cite{CKK12} remains open on both sides. We record the questions as
+stated in the conclusion of~\cite{CKK12}: whether there are lower bounds
+larger than $(1+\sqrt{37})/6$, and whether for more than three machines
+algorithms with competitive ratio $(1+\sqrt{37})/6$ exist. The two
+constructions of this paper are exact at the constant $c$---two stopping
+ratios of the explicit family, and both constraints of the padding lemma,
+hold with equality---and we hope they may be useful in resolving either
+question.
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\section*{Statements and Declarations}
+
+\paragraph{Competing Interests.}
+The author has no competing interests to declare.
+
+\paragraph{Data Availability.}
+The preprint of this work is openly available at Zenodo, DOI: 10.5281/zenodo.22953110.
+
+\paragraph{AI Use Disclosure.}
+Literature verification and symbolic algebra checks in this work were
+assisted by AI tools; all mathematical statements were independently
+verified by the author.
+
+\paragraph{Funding.}
+No funding was received for this work.
+
+\end{document}
