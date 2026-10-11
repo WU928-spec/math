@@ -1,0 +1,71 @@
+菜单（×1000000）：[1000000, 734797, 578266, 500000, 400000, 333333]
+[自适应] 8值菜单 NMAX= 9：博弈值 = 1.18046005（≤ ρ=1.18046042，差 -3.76e-07）  状态=1668578  耗时=3.3s
+[自适应] 8值菜单 NMAX=11：博弈值 = 1.18046005（≤ ρ=1.18046042，差 -3.76e-07）  状态=16363062  耗时=35.2s
+[自适应] 8值菜单 NMAX=12：博弈值 = 1.18046005（≤ ρ=1.18046042，差 -3.76e-07）  状态=47034835  耗时=123.9s
+
+[94873] signal 15: Terminated: 15
+in expression starting at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:72
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+gc_try_claim_and_push at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:1707
+gc_mark_objarray at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:1863
+gc_drain_own_chunkqueue at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:2564 [inlined]
+gc_mark_loop_serial at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:2577
+_jl_gc_collect at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:3134
+ijl_gc_collect at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:3574
+maybe_collect at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:355 [inlined]
+jl_gc_small_alloc_inner at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:731 [inlined]
+ijl_gc_small_alloc at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/gc-stock.c:780
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:53
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+V at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:48
+unknown function (ip: 0x1140dcd53) at (unknown file)
+game_adaptive at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:56
+main at /Users/a123456/math/半在线研究/SOSDP上界_algA_5over4/code/m3_a3_verify/jl/lb_game2.jl:66
+unknown function (ip: 0x1140846e3) at (unknown file)
+jl_apply at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/julia.h:2318 [inlined]
+do_call at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:123
+eval_stmt_value at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:194 [inlined]
+eval_body at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:675
+jl_interpret_toplevel_thunk at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/interpreter.c:884
+jl_toplevel_eval_flex at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:742
+jl_eval_toplevel_stmts at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:585
+jl_toplevel_eval_flex at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:683
+ijl_toplevel_eval at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:754 [inlined]
+ijl_toplevel_eval_in at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/toplevel.c:799
+eval at ./boot.jl:489
+include_string at ./loading.jl:3016
+_include at ./loading.jl:3076
+include at ./Base.jl:309
+exec_options at ./client.jl:344
+_start at ./client.jl:577
+jfptr__start_37735.1 at /Users/a123456/.local/julia-1.13.0/lib/julia/sys.dylib (unknown line)
+jl_apply at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/julia.h:2318 [inlined]
+true_main at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/jlapi.c:985
+jl_repl_entrypoint at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/builder-honeycrisp-P2C257CXGN.1/019ebd63-635e-4155-b60a-9d2815900786/trusted/build/builder-honeycrisp-P2C257CXGN-1/julialang/julia-ci/src/jlapi.c:1152
+unknown function (ip: 0x0) at (unknown file)
+Allocations: 4356828152 (Pool: 4356828116; Big: 36); GC: 234
